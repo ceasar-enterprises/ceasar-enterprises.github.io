@@ -77,6 +77,30 @@
   var yr = document.getElementById('year');
   if (yr) yr.textContent = new Date().getFullYear();
 
+  /* ── Sliding gold underline beneath the active tab ── */
+  var nav = document.querySelector('.nav');
+  var underline = document.getElementById('navUnderline');
+  if (nav && underline) {
+    var activeLink = nav.querySelector('a.active');
+    var place = function (el) {
+      var nr = nav.getBoundingClientRect();
+      if (!el || nr.width === 0) return;
+      var er = el.getBoundingClientRect();
+      underline.style.left = (er.left - nr.left) + 'px';
+      underline.style.width = er.width + 'px';
+      underline.classList.add('show');
+    };
+    underline.style.left = '0px';
+    setTimeout(function () {
+      underline.classList.add('show');
+      place(activeLink);
+    }, 1200);
+    nav.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('mouseenter', function () { place(a); });
+      a.addEventListener('mouseleave', function () { place(activeLink); });
+    });
+  }
+
   /* ── Contact form → WhatsApp + mailto ── */
   var form = document.getElementById('contactForm');
   if (form) {

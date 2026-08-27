@@ -34,7 +34,7 @@
     <header class="topbar" id="topbar">
         <div class="container topbar-inner">
             <a class="brand" href="index.html" aria-label="Ceasar Enterprises home">
-                <svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true">
+                <svg class="brand-mark logo-glow" viewBox="0 0 48 48" aria-hidden="true">
                     <rect width="48" height="48" rx="12" fill="url(#bgold)"/>
                     <path d="M33 14v22M19 20a6 6 0 0 0 0 12h6" fill="none" stroke="#141414" stroke-width="4" stroke-linecap="round"/>
                     <defs>
@@ -47,6 +47,7 @@
                 <span class="brand-text">CEASAR ENTERPRISES<small>Software · Automation</small></span>
             </a>
             <nav class="nav" aria-label="Primary">
+                <span id="navUnderline" class="nav-underline" aria-hidden="true"></span>
                 <a href="index.html" class="active">Home</a>
                 <a href="services.html">Services</a>
                 <a href="products.html">Products</a>
@@ -69,13 +70,15 @@
     </div>
 
     <!-- Hero -->
-    <section class="hero">
+    <section class="hero scene">
+        <canvas id="heroScene" aria-hidden="true"></canvas>
+        <div class="scene-vignette" aria-hidden="true"></div>
         <div class="container">
             <div class="hero-badge reveal"><span class="dot"></span>Now accepting new projects</div>
             <h1 class="display reveal d1">Software built for the <em>realities</em> of East Africa.</h1>
             <p class="lede reveal d2" style="margin-top:26px;">Offline-first business automation, real estate platforms, and custom tools that keep running when the internet doesn't. Your data stays on your machine — no cloud hostage, no subscription trap.</p>
             <div class="hero-actions reveal d3">
-                <a class="btn btn-gold" href="contact.html">Start a Project →</a>
+                <a class="btn btn-gold pulse" href="contact.html">Start a Project <span class="arrow">→</span></a>
                 <a class="btn btn-ghost" href="products.html">See What We've Built</a>
             </div>
             <div class="hero-meta reveal d3">
@@ -264,5 +267,6 @@
     </footer>
 
     <script src="assets/js/main.js"></script>
+    <script src="assets/js/hero.js"></script>
 </body>
 </html>
