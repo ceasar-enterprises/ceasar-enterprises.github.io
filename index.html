@@ -16,7 +16,7 @@
     <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -33,6 +33,7 @@
             --muted-2: #8b857a;
             --font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             --display: "Space Grotesk", -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+            --display-serif: "Fraunces", Georgia, "Times New Roman", serif;
         }
 
         html { scroll-behavior: smooth; }
@@ -90,8 +91,8 @@
         nav.scrolled { background: rgba(11, 11, 14, 0.85); border-bottom-color: var(--line); }
         .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 68px; }
         .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-        .logo-mark { width: 34px; height: 34px; flex: 0 0 34px; }
-        .logo-text { font-size: 15px; font-weight: 600; letter-spacing: 0.06em; color: var(--text); }
+        .logo-mark { width: 34px; height: 34px; flex: 0 0 34px; object-fit: cover; border-radius: 8px; }
+        .logo-text { font-family: var(--display-serif); font-size: 16px; font-weight: 600; letter-spacing: 0.02em; color: var(--text); }
         .logo-text small { display: block; font-size: 10px; font-weight: 500; letter-spacing: 0.22em; color: var(--muted-2); text-transform: uppercase; }
 
         .nav-links { display: flex; align-items: center; gap: 34px; list-style: none; }
@@ -124,7 +125,7 @@
         .eyebrow { display: inline-flex; align-items: center; gap: 10px; font-size: 11.5px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); }
         .eyebrow .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 10px rgba(217,178,94,0.8); }
         .hero-badge { display: inline-flex; align-items: center; gap: 10px; padding: 8px 18px; border: 1px solid var(--line); border-radius: 999px; background: rgba(255,255,255,0.02); margin-bottom: 34px; }
-        .hero h1 { font-size: clamp(42px, 6.4vw, 76px); font-weight: 650; letter-spacing: -0.03em; line-height: 1.04; max-width: 960px; margin: 0 auto 26px; }
+        .hero h1 { font-family: var(--display-serif); font-size: clamp(42px, 6.4vw, 76px); font-weight: 600; letter-spacing: -0.02em; line-height: 1.04; max-width: 960px; margin: 0 auto 26px; }
         .hero h1 em { font-style: normal; color: var(--gold); }
         .hero p.lede { font-size: 18.5px; color: var(--muted); max-width: 620px; margin: 0 auto 44px; line-height: 1.75; }
         .hero-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
@@ -279,16 +280,7 @@
         <nav id="navbar">
             <div class="wrap nav-inner">
                 <a class="logo" href="#" aria-label="Ceasar Enterprises home">
-                    <svg class="logo-mark" viewBox="0 0 48 48" aria-hidden="true">
-                        <rect width="48" height="48" rx="12" fill="url(#glogo)"/>
-                        <path d="M33 14v22M19 20a6 6 0 0 0 0 12h6" fill="none" stroke="#14140f" stroke-width="4" stroke-linecap="round"/>
-                        <defs>
-                            <linearGradient id="glogo" x1="0" y1="0" x2="48" y2="48">
-                                <stop offset="0" stop-color="#e6c680"/>
-                                <stop offset="1" stop-color="#c19a45"/>
-                            </linearGradient>
-                        </defs>
-                    </svg>
+                    <img class="logo-mark" src="assets/img/ceasar-logo.jpeg" alt="Ceasar Enterprises">
                     <span class="logo-text">Ceasar Enterprises<small>Software · Automation</small></span>
                 </a>
                 <ul class="nav-links">
