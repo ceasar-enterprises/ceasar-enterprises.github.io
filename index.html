@@ -4,269 +4,511 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ceasar Enterprises — Software Built for the Realities of East Africa</title>
-    <meta name="description" content="Ceasar Enterprises builds offline-first business automation software, real estate platforms, and custom tools for Uganda and East Africa. Local-first, no lock-in, no subscription.">
+    <meta name="description" content="Ceasar Enterprises builds offline-first business automation software, real estate platforms, and custom tools for Uganda and East Africa. No lock-in, no subscription trap.">
     <meta name="keywords" content="software development Uganda, business automation, NEBULA, CEASAR RENT, PRISM, offline-first software, Kampala software company, East Africa software">
     <meta name="author" content="Ceasar Enterprises">
     <meta property="og:title" content="Ceasar Enterprises — Software Built for the Realities of East Africa">
     <meta property="og:description" content="Offline-first business automation, real estate platforms, and custom software for Uganda & East Africa.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://ceasar-enterprises.github.io/">
-    <meta property="og:image" content="https://ceasar-enterprises.github.io/assets/img/og-cover.png">
     <link rel="canonical" href="https://ceasar-enterprises.github.io/">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/style.css">
     <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg: #0b0b0e;
+            --bg-deep: #08080a;
+            --panel: rgba(255, 255, 255, 0.035);
+            --line: rgba(255, 255, 255, 0.08);
+            --gold: #d9b25e;
+            --gold-soft: rgba(217, 178, 94, 0.12);
+            --gold-faint: rgba(217, 178, 94, 0.06);
+            --text: #f1efe9;
+            --muted: #a49f94;
+            --muted-2: #746f65;
+            --font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font);
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.65;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+            overflow-x: hidden;
+        }
+
+        ::selection { background: rgba(217, 178, 94, 0.28); color: #fff; }
+
+        a { color: inherit; }
+
+        /* ── Ambient background ── */
+        .bg-layer { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+        .aurora { position: absolute; border-radius: 50%; filter: blur(90px); opacity: 0.5; }
+        .aurora-1 { width: 640px; height: 640px; background: radial-gradient(circle, rgba(217,178,94,0.14) 0%, transparent 68%); top: -220px; right: -160px; animation: auroraDrift 26s ease-in-out infinite alternate; }
+        .aurora-2 { width: 520px; height: 520px; background: radial-gradient(circle, rgba(217,178,94,0.07) 0%, transparent 70%); bottom: -260px; left: -140px; animation: auroraDrift 32s ease-in-out infinite alternate-reverse; }
+        @keyframes auroraDrift { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(36px, -28px) scale(1.08); } }
+        #dust { position: fixed; inset: 0; z-index: 1; pointer-events: none; }
+        .vignette { position: fixed; inset: 0; z-index: 1; pointer-events: none; background: radial-gradient(120% 90% at 50% 0%, transparent 55%, rgba(8,8,10,0.7) 100%); }
+
+        .content { position: relative; z-index: 2; }
+
+        .wrap { max-width: 1120px; margin: 0 auto; padding: 0 32px; }
+
+        /* ── Navigation ── */
+        nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            backdrop-filter: blur(24px) saturate(1.4); -webkit-backdrop-filter: blur(24px) saturate(1.4);
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.4s, background 0.4s;
+            background: rgba(11, 11, 14, 0.55);
+        }
+        nav.scrolled { background: rgba(11, 11, 14, 0.85); border-bottom-color: var(--line); }
+        .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+        .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .logo-mark { width: 34px; height: 34px; flex: 0 0 34px; }
+        .logo-text { font-size: 15px; font-weight: 600; letter-spacing: 0.06em; color: var(--text); }
+        .logo-text small { display: block; font-size: 10px; font-weight: 500; letter-spacing: 0.22em; color: var(--muted-2); text-transform: uppercase; }
+
+        .nav-links { display: flex; align-items: center; gap: 34px; list-style: none; }
+        .nav-links a { text-decoration: none; font-size: 13.5px; font-weight: 500; color: var(--muted); position: relative; padding: 6px 0; transition: color 0.25s; }
+        .nav-links a::after { content: ''; position: absolute; left: 0; bottom: 0; height: 1.5px; width: 0; background: var(--gold); transition: width 0.3s cubic-bezier(0.22, 1, 0.36, 1); }
+        .nav-links a:hover { color: var(--text); }
+        .nav-links a:hover::after { width: 100%; }
+        .nav-links .nav-cta { padding: 9px 20px; border-radius: 999px; background: var(--gold); color: #14140f; font-weight: 600; font-size: 13px; transition: background 0.25s, box-shadow 0.25s; }
+        .nav-links .nav-cta::after { display: none; }
+        .nav-links .nav-cta:hover { background: #e4c377; box-shadow: 0 0 0 6px rgba(217,178,94,0.12); color: #14140f; }
+
+        /* ── Hero ── */
+        .hero { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 92vh; padding: 150px 0 90px; text-align: center; }
+        .eyebrow { display: inline-flex; align-items: center; gap: 10px; font-size: 11.5px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); }
+        .eyebrow .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 10px rgba(217,178,94,0.8); }
+        .hero-badge { display: inline-flex; align-items: center; gap: 10px; padding: 8px 18px; border: 1px solid var(--line); border-radius: 999px; background: rgba(255,255,255,0.02); margin-bottom: 34px; }
+        .hero h1 { font-size: clamp(42px, 6.4vw, 76px); font-weight: 650; letter-spacing: -0.03em; line-height: 1.04; max-width: 960px; margin: 0 auto 26px; }
+        .hero h1 em { font-style: normal; color: var(--gold); }
+        .hero p.lede { font-size: 18.5px; color: var(--muted); max-width: 620px; margin: 0 auto 44px; line-height: 1.75; }
+        .hero-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+        .btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 30px; border-radius: 999px; font-size: 14.5px; font-weight: 600; text-decoration: none; transition: all 0.28s cubic-bezier(0.22, 1, 0.36, 1); cursor: pointer; }
+        .btn svg { width: 15px; height: 15px; }
+        .btn-gold { background: var(--gold); color: #14140f; }
+        .btn-gold:hover { background: #e4c377; transform: translateY(-2px); box-shadow: 0 14px 34px rgba(217,178,94,0.22); }
+        .btn-ghost { border: 1px solid var(--line); color: var(--text); background: rgba(255,255,255,0.02); }
+        .btn-ghost:hover { border-color: rgba(217,178,94,0.45); color: var(--gold); transform: translateY(-2px); background: var(--gold-faint); }
+
+        .hero-foot { margin-top: 72px; display: flex; align-items: center; gap: 14px; color: var(--muted-2); font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; }
+        .hero-foot::before, .hero-foot::after { content: ''; height: 1px; width: 46px; background: linear-gradient(90deg, transparent, var(--line)); }
+        .hero-foot::after { background: linear-gradient(90deg, var(--line), transparent); }
+
+        /* ── Sections ── */
+        section { padding: 110px 0; position: relative; }
+        .section-head { max-width: 680px; margin-bottom: 58px; }
+        .section-head h2 { font-size: clamp(30px, 4vw, 42px); font-weight: 640; letter-spacing: -0.025em; line-height: 1.15; margin-top: 14px; }
+        .section-head p { color: var(--muted); margin-top: 14px; font-size: 16.5px; }
+        .rule { width: 52px; height: 2px; background: var(--gold); border-radius: 2px; margin-top: 22px; opacity: 0.85; }
+
+        /* ── Stats ── */
+        .stats-band { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: rgba(255,255,255,0.016); }
+        .stats { display: grid; grid-template-columns: repeat(4, 1fr); padding: 52px 0; }
+        .stat { text-align: left; padding-left: 34px; border-left: 1px solid var(--line); }
+        .stat:first-child { border-left: none; padding-left: 0; }
+        .stat .n { font-size: 40px; font-weight: 650; letter-spacing: -0.02em; color: var(--gold); font-variant-numeric: tabular-nums; }
+        .stat .l { font-size: 13px; color: var(--muted); margin-top: 6px; letter-spacing: 0.02em; }
+
+        /* ── Cards ── */
+        .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+        .card {
+            background: var(--panel);
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            padding: 38px 34px;
+            transition: border-color 0.35s, transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), background 0.35s;
+        }
+        .card:hover { border-color: rgba(217,178,94,0.28); transform: translateY(-4px); background: rgba(217,178,94,0.04); }
+        .card .ico { width: 46px; height: 46px; border-radius: 13px; display: flex; align-items: center; justify-content: center; background: var(--gold-faint); border: 1px solid rgba(217,178,94,0.16); margin-bottom: 26px; color: var(--gold); }
+        .card .ico svg { width: 21px; height: 21px; }
+        .card h3 { font-size: 18px; font-weight: 620; letter-spacing: -0.01em; margin-bottom: 12px; }
+        .card p { font-size: 14.5px; color: var(--muted); }
+
+        /* ── Products ── */
+        .product { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 64px; align-items: center; padding: 64px 0; border-bottom: 1px solid var(--line); }
+        .product:first-of-type { border-top: 1px solid var(--line); }
+        .product.reverse .product-visual { order: -1; }
+        .p-index { font-size: 12px; font-weight: 600; letter-spacing: 0.24em; color: var(--muted-2); }
+        .p-status { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; color: var(--gold); font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; margin-top: 16px; }
+        .p-status::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 8px rgba(217,178,94,0.9); }
+        .product h3 { font-size: 30px; font-weight: 640; letter-spacing: -0.02em; margin: 12px 0 16px; }
+        .product p { color: var(--muted); font-size: 16px; line-height: 1.8; margin-bottom: 26px; max-width: 520px; }
+        .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+        .tag { font-size: 12px; font-weight: 500; color: var(--muted); padding: 6px 13px; border: 1px solid var(--line); border-radius: 999px; }
+
+        .product-visual {
+            border: 1px solid var(--line); border-radius: 20px; padding: 56px 40px;
+            display: flex; align-items: center; justify-content: center; min-height: 320px;
+            background:
+                radial-gradient(120% 120% at 20% 0%, rgba(217,178,94,0.09) 0%, transparent 55%),
+                linear-gradient(180deg, rgba(255,255,255,0.02) 0%, transparent 40%), var(--bg-deep);
+            position: relative; overflow: hidden;
+        }
+        .product-visual svg { width: 88px; height: 88px; color: var(--gold); opacity: 0.9; }
+        .product-visual::after { content: ''; position: absolute; inset: 0; border-radius: 20px; background: linear-gradient(135deg, transparent 40%, rgba(217,178,94,0.06) 100%); pointer-events: none; }
+
+        /* ── Contact ── */
+        .contact-band { border: 1px solid var(--line); border-radius: 24px; padding: 64px; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 48px; background: linear-gradient(180deg, rgba(217,178,94,0.05) 0%, transparent 55%), var(--bg-deep); position: relative; overflow: hidden; }
+        .contact-band::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(217,178,94,0.5), transparent); }
+        .contact-band h2 { font-size: clamp(26px, 3.4vw, 36px); font-weight: 640; letter-spacing: -0.02em; line-height: 1.15; }
+        .contact-band > div > p { color: var(--muted); margin-top: 16px; font-size: 16px; max-width: 460px; }
+        .contact-rows { display: flex; flex-direction: column; gap: 18px; }
+        .contact-row { display: flex; align-items: center; gap: 18px; padding: 15px 20px; border: 1px solid var(--line); border-radius: 14px; background: rgba(255,255,255,0.018); text-decoration: none; transition: border-color 0.3s, background 0.3s, transform 0.3s; }
+        .contact-row:hover { border-color: rgba(217,178,94,0.32); background: rgba(217,178,94,0.045); transform: translateX(4px); }
+        .contact-row .ic { width: 38px; height: 38px; border-radius: 11px; display: flex; align-items: center; justify-content: center; background: var(--gold-faint); color: var(--gold); flex: 0 0 38px; }
+        .contact-row .ic svg { width: 17px; height: 17px; }
+        .contact-row .k { font-size: 12px; color: var(--muted-2); letter-spacing: 0.1em; text-transform: uppercase; }
+        .contact-row .v { font-size: 15px; font-weight: 550; color: var(--text); margin-top: 2px; }
+        .contact-cta { margin-top: 22px; }
+
+        /* ── Footer ── */
+        footer { border-top: 1px solid var(--line); padding: 44px 0 52px; }
+        .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+        .footer-copy { font-size: 13.5px; color: var(--muted-2); }
+        .footer-links { display: flex; gap: 28px; list-style: none; }
+        .footer-links a { text-decoration: none; font-size: 13px; color: var(--muted); transition: color 0.25s; }
+        .footer-links a:hover { color: var(--gold); }
+        .footer-mark { color: var(--gold); font-weight: 600; letter-spacing: 0.02em; }
+
+        /* ── Reveal ── */
+        .reveal { opacity: 0; transform: translateY(26px); transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+        .reveal-1 { transition-delay: 0.08s; }
+        .reveal-2 { transition-delay: 0.16s; }
+        .reveal-3 { transition-delay: 0.24s; }
+
+        @media (max-width: 900px) {
+            .grid { grid-template-columns: 1fr; }
+            .stats { grid-template-columns: repeat(2, 1fr); gap: 36px 0; }
+            .stat:nth-child(3) { border-left: none; padding-left: 0; }
+            .product { grid-template-columns: 1fr; gap: 36px; }
+            .product.reverse .product-visual { order: 0; }
+            .contact-band { grid-template-columns: 1fr; padding: 44px 30px; }
+            .nav-links { display: none; }
+        }
+        @media (max-width: 560px) {
+            .stats { grid-template-columns: 1fr 1fr; }
+            .stat:nth-child(2n+1) { border-left: none; padding-left: 0; }
+            .hero { padding-top: 130px; }
+        }
+    </style>
 </head>
 <body>
 
-    <!-- Loader -->
-    <div class="loader" id="loader">
-        <svg class="mark" viewBox="0 0 48 48" aria-hidden="true">
-            <rect width="48" height="48" rx="12" fill="#e8b84b"/>
-            <path d="M33 14v22M19 20a6 6 0 0 0 0 12h6" fill="none" stroke="#141414" stroke-width="4" stroke-linecap="round"/>
-        </svg>
-        <div class="loader-text">Ceasar Enterprises</div>
+    <div class="bg-layer" aria-hidden="true">
+        <div class="aurora aurora-1"></div>
+        <div class="aurora aurora-2"></div>
     </div>
+    <canvas id="dust" aria-hidden="true"></canvas>
+    <div class="vignette" aria-hidden="true"></div>
 
-    <!-- Topbar -->
-    <header class="topbar" id="topbar">
-        <div class="container topbar-inner">
-            <a class="brand" href="index.html" aria-label="Ceasar Enterprises home">
-                <svg class="brand-mark logo-glow" viewBox="0 0 48 48" aria-hidden="true">
-                    <rect width="48" height="48" rx="12" fill="url(#bgold)"/>
-                    <path d="M33 14v22M19 20a6 6 0 0 0 0 12h6" fill="none" stroke="#141414" stroke-width="4" stroke-linecap="round"/>
-                    <defs>
-                        <linearGradient id="bgold" x1="0" y1="0" x2="48" y2="48">
-                            <stop offset="0" stop-color="#f4c66c"/>
-                            <stop offset="1" stop-color="#d4a017"/>
-                        </linearGradient>
-                    </defs>
-                </svg>
-                <span class="brand-text">CEASAR ENTERPRISES<small>Software · Automation</small></span>
-            </a>
-            <nav class="nav" aria-label="Primary">
-                <span id="navUnderline" class="nav-underline" aria-hidden="true"></span>
-                <a href="index.html" class="active">Home</a>
-                <a href="services.html">Services</a>
-                <a href="products.html">Products</a>
-                <a href="pricing.html">Pricing</a>
-                <a href="about.html">About</a>
-                <a href="contact.html" class="btn btn-gold btn-sm">Start a Project</a>
-            </nav>
-            <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-label="Menu">☰</button>
-        </div>
-    </header>
+    <div class="content">
 
-    <!-- Mobile menu -->
-    <div class="mobile-menu" id="mobileMenu">
-        <a href="index.html" class="active">Home</a>
-        <a href="services.html">Services</a>
-        <a href="products.html">Products</a>
-        <a href="pricing.html">Pricing</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-    </div>
-
-    <!-- Hero -->
-    <section class="hero scene">
-        <canvas id="heroScene" aria-hidden="true"></canvas>
-        <div class="scene-vignette" aria-hidden="true"></div>
-        <div class="container">
-            <div class="hero-badge reveal"><span class="dot"></span>Now accepting new projects</div>
-            <h1 class="display reveal d1">Software built for the <em>realities</em> of East Africa.</h1>
-            <p class="lede reveal d2" style="margin-top:26px;">Offline-first business automation, real estate platforms, and custom tools that keep running when the internet doesn't. Your data stays on your machine — no cloud hostage, no subscription trap.</p>
-            <div class="hero-actions reveal d3">
-                <a class="btn btn-gold pulse" href="contact.html">Start a Project <span class="arrow">→</span></a>
-                <a class="btn btn-ghost" href="products.html">See What We've Built</a>
+        <nav id="navbar">
+            <div class="wrap nav-inner">
+                <a class="logo" href="#" aria-label="Ceasar Enterprises home">
+                    <svg class="logo-mark" viewBox="0 0 48 48" aria-hidden="true">
+                        <rect width="48" height="48" rx="12" fill="url(#glogo)"/>
+                        <path d="M33 14v22M19 20a6 6 0 0 0 0 12h6" fill="none" stroke="#14140f" stroke-width="4" stroke-linecap="round"/>
+                        <defs>
+                            <linearGradient id="glogo" x1="0" y1="0" x2="48" y2="48">
+                                <stop offset="0" stop-color="#e6c680"/>
+                                <stop offset="1" stop-color="#c19a45"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                    <span class="logo-text">Ceasar Enterprises<small>Software · Automation</small></span>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact" class="nav-cta">Start a Project</a></li>
+                </ul>
             </div>
-            <div class="hero-meta reveal d3">
-                <div><div class="hm-label">Products shipped</div><div class="hm-value" data-count="8" data-suffix="+">0</div></div>
-                <div><div class="hm-label">Deployment model</div><div class="hm-value">Offline-first</div></div>
-                <div><div class="hm-label">Licensing</div><div class="hm-value">One-time · Yours</div></div>
-                <div><div class="hm-label">Built &amp; tested</div><div class="hm-value">Kampala, UG</div></div>
-            </div>
-        </div>
-    </section>
+        </nav>
 
-    <!-- Stats band -->
-    <div class="section-alt section tight">
-        <div class="container stats">
-            <div class="stat reveal"><div class="n" data-count="8" data-suffix="+">0</div><div class="l">Products built and running</div></div>
-            <div class="stat reveal d1"><div class="n" data-count="40" data-suffix="+">0</div><div class="l">Property units managed</div></div>
-            <div class="stat reveal d2"><div class="n" data-count="50" data-suffix="+">0</div><div class="l">Named partner prospects</div></div>
-            <div class="stat reveal d3"><div class="n" data-count="100" data-suffix="%">0</div><div class="l">Of products work offline</div></div>
-        </div>
-    </div>
-
-    <!-- Services preview -->
-    <section class="section">
-        <div class="container">
-            <div class="section-head reveal">
-                <span class="eyebrow">What we do</span>
-                <h2>Full-stack capability,<br>delivered end to end.</h2>
-            </div>
-            <div class="grid grid-3">
-                <div class="card reveal">
-                    <div class="ico">⌘</div>
-                    <h3>Custom Software</h3>
-                    <p>Bespoke web applications, dashboards, and systems built from scratch — no bloatware, no framework debt. You own exactly what we build.</p>
+        <!-- Hero -->
+        <header class="hero">
+            <div class="wrap">
+                <div class="hero-badge reveal">
+                    <span class="dot"></span>
+                    <span class="eyebrow">Now accepting new projects</span>
                 </div>
-                <div class="card reveal d1">
-                    <div class="ico">⚙</div>
-                    <h3>Business Automation</h3>
-                    <p>AI-assisted sales pipelines, automatic invoicing, churn prediction, and cycle engines that run your operations while you sleep.</p>
-                </div>
-                <div class="card reveal d2">
-                    <div class="ico">▦</div>
-                    <h3>Real Estate Tech</h3>
-                    <p>Rent management, tenant records, receipts, and property platforms purpose-built for Ugandan landlords managing multiple units.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Flagship products -->
-    <section class="section section-alt">
-        <div class="container">
-            <div class="section-head reveal">
-                <span class="eyebrow">Flagships</span>
-                <h2>Real products. Real problems. Proven in Uganda.</h2>
-            </div>
-
-            <div class="product-top reveal">
-                <div class="pt-body">
-                    <span class="p-status">Flagship · Live</span>
-                    <h3>NEBULA — Business Automation Engine</h3>
-                    <p class="lede" style="font-size:16px;margin-bottom:22px;">A 6-phase automation engine with AI-assisted sales cycles, automatic invoicing, churn prediction, and a glass dashboard. Runs fully offline; deploys on the client's own machine — desktop, LAN, or with optional remote access.</p>
-                    <div class="tags">
-                        <span class="tag gold">Python</span><span class="tag gold">SQLite</span><span class="tag gold">AI / ML</span><span class="tag gold">Offline-first</span><span class="tag gold">HTTPS ready</span>
-                    </div>
-                </div>
-                <div class="pt-visual">🚀</div>
-            </div>
-
-            <div class="product-top reverse reveal">
-                <div class="pt-body">
-                    <span class="p-status">Live · Multi-unit</span>
-                    <h3>CEASAR RENT — Property Management</h3>
-                    <p class="lede" style="font-size:16px;margin-bottom:22px;">Rent management for landlords with dozens of units. Tenants, full/partial/advance payments, deposits, maintenance, late fees, printable receipts — all on LAN, no internet required.</p>
-                    <div class="tags">
-                        <span class="tag gold">Python</span><span class="tag gold">Mobile-ready</span><span class="tag gold">LAN access</span><span class="tag gold">Printable receipts</span>
-                    </div>
-                </div>
-                <div class="pt-visual">🏦</div>
-            </div>
-
-            <div class="product-top reveal">
-                <div class="pt-body">
-                    <span class="p-status">Live · MVP</span>
-                    <h3>PRISM — Trading Analysis Platform</h3>
-                    <p class="lede" style="font-size:16px;margin-bottom:22px;">A TradingView-style platform with a fully custom Canvas charting engine — candlesticks, 12 indicators, drawing tools, watchlists, and paper trading. No subscription needed.</p>
-                    <div class="tags">
-                        <span class="tag gold">Node.js</span><span class="tag gold">Custom Canvas engine</span><span class="tag gold">12 indicators</span>
-                    </div>
-                </div>
-                <div class="pt-visual">📈</div>
-            </div>
-
-            <div class="reveal" style="text-align:center;margin-top:40px;">
-                <a class="btn btn-ghost" href="products.html">Explore all products →</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Philosophy -->
-    <section class="section">
-        <div class="container">
-            <div class="section-head reveal">
-                <span class="eyebrow">The difference</span>
-                <h2>Your data stays yours. Full stop.</h2>
-            </div>
-            <div class="grid grid-3">
-                <div class="card reveal">
-                    <div class="ico">🔒</div>
-                    <h3>No SaaS lock-in</h3>
-                    <p>Software runs on your machine. Data lives on your machine. If the vendor disappears tomorrow, your business keeps running.</p>
-                </div>
-                <div class="card reveal d1">
-                    <div class="ico">⏱</div>
-                    <h3>Offline-first by design</h3>
-                    <p>Built for Uganda's grid and connectivity reality. When the internet drops, sales and operations don't stop.</p>
-                </div>
-                <div class="card reveal d2">
-                    <div class="ico">✅</div>
-                    <h3>One-time, honest pricing</h3>
-                    <p>No recurring subscriptions. Pay once, own it. MTN MoMo and Airtel Money accepted.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA band -->
-    <section class="section tight">
-        <div class="container">
-            <div class="cta-band reveal">
-                <div>
-                    <h2>Tell us what you need built.</h2>
-                    <p>Custom software, automation, or a tool that makes your business run itself — we'll scope it with you and deliver something you own.</p>
-                </div>
-                <a class="btn" href="https://wa.me/256702246854" target="_blank" rel="noopener">WhatsApp us →</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <a class="brand" href="index.html">
-                        <svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true">
-                            <rect width="48" height="48" rx="12" fill="url(#bgoldf)"/>
-                            <path d="M33 14v22M19 20a6 6 0 0 0 0 12h6" fill="none" stroke="#141414" stroke-width="4" stroke-linecap="round"/>
-                            <defs><linearGradient id="bgoldf" x1="0" y1="0" x2="48" y2="48"><stop offset="0" stop-color="#f4c66c"/><stop offset="1" stop-color="#d4a017"/></linearGradient></defs>
-                        </svg>
-                        <span class="brand-text">CEASAR ENTERPRISES<small>Software · Automation</small></span>
+                <h1 class="reveal reveal-1">Software built for the realities of <em>East Africa</em>.</h1>
+                <p class="lede reveal reveal-2">Offline-first business automation, real estate platforms, and custom tools that keep running when the internet doesn't. Your data stays on your machine — no cloud hostage, no subscription trap.</p>
+                <div class="hero-actions reveal reveal-2">
+                    <a class="btn btn-gold" href="https://wa.me/256702246854?text=Hi%20Ceasar%20Enterprises%2C%20I%20want%20to%20start%20a%20project." target="_blank" rel="noopener">Start a project
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                     </a>
-                    <p>Offline-first software built in Kampala for the realities of Uganda and East Africa.</p>
+                    <a class="btn btn-ghost" href="#products">See what we've built</a>
                 </div>
-                <div class="footer-col">
-                    <h5>Company</h5>
-                    <ul>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="products.html">Products</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="pricing.html">Pricing</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h5>Flagships</h5>
-                    <ul>
-                        <li><a href="products.html#nebula">NEBULA</a></li>
-                        <li><a href="products.html#ceasar-rent">CEASAR RENT</a></li>
-                        <li><a href="products.html#prism">PRISM</a></li>
-                        <li><a href="products.html">All products</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h5>Contact</h5>
-                    <ul>
-                        <li><a href="https://wa.me/256702246854" target="_blank" rel="noopener">WhatsApp +256 702 246854</a></li>
-                        <li><a href="mailto:charlvan042@gmail.com">charlvan042@gmail.com</a></li>
-                        <li><a href="contact.html">Kampala, Uganda</a></li>
-                    </ul>
-                </div>
+                <div class="hero-foot reveal reveal-3">Kampala · Uganda · Serving East Africa</div>
             </div>
-            <div class="footer-bottom">
-                <span>© <span id="year">2026</span> Ceasar Enterprises. All rights reserved.</span>
-                <span>Built with precision in Uganda.</span>
+        </header>
+
+        <!-- Stats -->
+        <div class="stats-band">
+            <div class="wrap">
+                <div class="stats">
+                    <div class="stat reveal"><div class="n" data-target="8" data-suffix="+">0</div><div class="l">Products built and running</div></div>
+                    <div class="stat reveal reveal-1"><div class="n" data-target="40" data-suffix="+">0</div><div class="l">Property units managed</div></div>
+                    <div class="stat reveal reveal-2"><div class="n" data-target="50" data-suffix="+">0</div><div class="l">Named partner prospects</div></div>
+                    <div class="stat reveal reveal-3"><div class="n" data-target="100" data-suffix="%">0</div><div class="l">Of products work offline</div></div>
+                </div>
             </div>
         </div>
-    </footer>
 
-    <script src="assets/js/main.js"></script>
-    <script src="assets/js/hero.js"></script>
+        <!-- Services -->
+        <section id="services">
+            <div class="wrap">
+                <div class="section-head reveal">
+                    <span class="eyebrow"><span class="dot"></span>What we do</span>
+                    <h2>Full-stack capability, delivered end to end.</h2>
+                    <div class="rule"></div>
+                </div>
+                <div class="grid">
+                    <div class="card reveal">
+                        <div class="ico">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 9l3 3-3 3M13 15h4"/></svg>
+                        </div>
+                        <h3>Custom Software</h3>
+                        <p>Bespoke web applications, dashboards, and desktop systems built from scratch — no bloatware, no framework debt. You own exactly what we build.</p>
+                    </div>
+                    <div class="card reveal reveal-1">
+                        <div class="ico">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                        </div>
+                        <h3>Business Automation</h3>
+                        <p>AI-assisted sales pipelines, automatic invoicing, churn prediction, and cycle engines that run your operations while you sleep.</p>
+                    </div>
+                    <div class="card reveal reveal-2">
+                        <div class="ico">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="1.5"/><path d="M9 22v-4h6v4M9 7h.01M15 7h.01M9 11h.01M15 11h.01M9 15h.01M15 15h.01"/></svg>
+                        </div>
+                        <h3>Real Estate Tech</h3>
+                        <p>Rent management, tenant records, receipts, and property platforms purpose-built for Ugandan landlords managing multiple units.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Products -->
+        <section id="products" style="padding-top:20px;">
+            <div class="wrap">
+                <div class="section-head reveal">
+                    <span class="eyebrow"><span class="dot"></span>Flagships</span>
+                    <h2>Real products. Real problems. Proven in Uganda.</h2>
+                    <div class="rule"></div>
+                </div>
+
+                <div class="product reveal">
+                    <div class="product-info">
+                        <span class="p-index">01</span>
+                        <div class="p-status">Flagship · Live</div>
+                        <h3>NEBULA — Business Automation Engine</h3>
+                        <p>A 6-phase automation engine with AI-assisted sales cycles, automatic invoicing, churn prediction, and a glass dashboard. Runs fully offline and deploys on the client's own machine — desktop, LAN, or with optional remote access.</p>
+                        <div class="tags">
+                            <span class="tag">Python</span><span class="tag">SQLite</span><span class="tag">AI / ML</span><span class="tag">Offline-first</span><span class="tag">HTTPS ready</span>
+                        </div>
+                    </div>
+                    <div class="product-visual" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>
+                    </div>
+                </div>
+
+                <div class="product reverse reveal">
+                    <div class="product-info">
+                        <span class="p-index">02</span>
+                        <div class="p-status">Live · Multi-unit</div>
+                        <h3>CEASAR RENT — Property Management</h3>
+                        <p>Rent management built for landlords with dozens of units. Tenants, full/partial/advance payments, deposits, maintenance, late fees, printable receipts — all on LAN, no internet required.</p>
+                        <div class="tags">
+                            <span class="tag">Python</span><span class="tag">Mobile-ready</span><span class="tag">LAN access</span><span class="tag">Printable receipts</span>
+                        </div>
+                    </div>
+                    <div class="product-visual" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="1.5"/><path d="M9 22v-4h6v4M9 7h.01M15 7h.01M9 11h.01M15 11h.01M9 15h.01M15 15h.01"/></svg>
+                    </div>
+                </div>
+
+                <div class="product reveal">
+                    <div class="product-info">
+                        <span class="p-index">03</span>
+                        <div class="p-status">Live · MVP</div>
+                        <h3>PRISM — Trading Analysis Platform</h3>
+                        <p>A TradingView-style platform with a fully custom Canvas charting engine — candlesticks, 12 indicators, drawing tools, watchlists, and paper trading. No subscription required.</p>
+                        <div class="tags">
+                            <span class="tag">Node.js</span><span class="tag">Custom Canvas engine</span><span class="tag">12 indicators</span>
+                        </div>
+                    </div>
+                    <div class="product-visual" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About -->
+        <section id="about" style="padding-top:40px;">
+            <div class="wrap">
+                <div class="section-head reveal">
+                    <span class="eyebrow"><span class="dot"></span>The difference</span>
+                    <h2>Your data stays yours. Full stop.</h2>
+                    <div class="rule"></div>
+                </div>
+                <div class="grid">
+                    <div class="card reveal">
+                        <div class="ico">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1l22 22"/><path d="M16.72 11.06A10.94 10.94 0 0 1 19 12.55M5 12.55a10.94 10.94 0 0 1 5.17-2.39M10.71 5.05A16 16 0 0 1 22.58 9"/><path d="M1.42 9a15.91 15.91 0 0 1 4.7-2.88"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
+                        </div>
+                        <h3>Offline-first by design</h3>
+                        <p>Built for Uganda's grid and connectivity reality. When the internet drops, sales and operations don't stop.</p>
+                    </div>
+                    <div class="card reveal reveal-1">
+                        <div class="ico">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        </div>
+                        <h3>No SaaS lock-in</h3>
+                        <p>Software runs on your machine. Data lives on your machine. If the vendor disappears tomorrow, your business keeps running.</p>
+                    </div>
+                    <div class="card reveal reveal-2">
+                        <div class="ico">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        </div>
+                        <h3>Made for East Africa</h3>
+                        <p>One-time, honest pricing. MTN MoMo and Airtel Money accepted. We know the market because we live in it.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact" style="padding-top:40px;">
+            <div class="wrap">
+                <div class="contact-band reveal">
+                    <div>
+                        <span class="eyebrow"><span class="dot"></span>Get in touch</span>
+                        <h2 style="margin-top:16px;">Tell us what you need built.</h2>
+                        <p>Custom software, automation, or a tool that makes your business run itself — we'll scope it with you and deliver something you own.</p>
+                    </div>
+                    <div>
+                        <div class="contact-rows">
+                            <a class="contact-row" href="https://wa.me/256702246854" target="_blank" rel="noopener">
+                                <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+                                <span><span class="k">WhatsApp</span><div class="v">+256 702 246854</div></span>
+                            </a>
+                            <a class="contact-row" href="mailto:charlvan042@gmail.com">
+                                <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>
+                                <span><span class="k">Email</span><div class="v">charlvan042@gmail.com</div></span>
+                            </a>
+                            <div class="contact-row">
+                                <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+<span><span class="k">Based in</span><div class="v">Kampala, Uganda</div></span>
+</div>
+                        </div>
+                        <a class="btn btn-gold contact-cta" href="https://wa.me/256702246854?text=Hi%20Ceasar%20Enterprises%2C%20I%20want%20to%20start%20a%20project." target="_blank" rel="noopener">Start a project
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="wrap footer-inner">
+                <span class="footer-copy">© <span id="year">2026</span> Ceasar Enterprises. All rights reserved.</span>
+                <ul class="footer-links">
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <span class="footer-mark">Built with precision in Uganda.</span>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // ── Dust field ──
+        (function () {
+            var canvas = document.getElementById('dust');
+            var ctx = canvas.getContext('2d');
+            var dots = [];
+            function resize() { canvas.width = window.innerWidth * 1; canvas.height = window.innerHeight * 1; }
+            window.addEventListener('resize', resize); resize();
+            var count = Math.min(90, Math.floor(canvas.width / 14));
+            for (var i = 0; i < count; i++) {
+                dots.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    r: Math.random() * 1.3 + 0.4,
+                    s: Math.random() * 0.14 + 0.03,
+                    a: Math.random() * 0.22 + 0.03,
+                    ph: Math.random() * Math.PI * 2
+                });
+            }
+            function frame(t) {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                for (var i = 0; i < dots.length; i++) {
+                    var d = dots[i];
+                    d.y -= d.s;
+                    d.x += Math.sin(t / 2000 + d.ph) * 0.12;
+                    if (d.y < -4) { d.y = canvas.height + 4; d.x = Math.random() * canvas.width; }
+                    ctx.beginPath();
+                    ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2);
+                    ctx.fillStyle = 'rgba(217,178,94,' + d.a + ')';
+                    ctx.fill();
+                }
+                requestAnimationFrame(frame);
+            }
+            requestAnimationFrame(frame);
+        })();
+
+        // ── Navbar state ──
+        var nav = document.getElementById('navbar');
+        window.addEventListener('scroll', function () { nav.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
+
+        // ── Reveal ──
+        var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+        }, { threshold: 0.12 });
+        document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+
+        // ── Counters ──
+        var cio = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) {
+                if (!e.isIntersecting) return;
+                var el = e.target;
+                var target = parseInt(el.dataset.target, 10);
+                var suffix = el.dataset.suffix || '';
+                var t0 = null;
+                function step(ts) {
+                    if (!t0) t0 = ts;
+                    var p = Math.min((ts - t0) / 1400, 1);
+                    var eased = 1 - Math.pow(1 - p, 3);
+                    el.textContent = Math.round(target * eased) + suffix;
+                    if (p < 1) requestAnimationFrame(step);
+                }
+                requestAnimationFrame(step);
+                cio.unobserve(el);
+            });
+        }, { threshold: 0.5 });
+        document.querySelectorAll('.stat .n').forEach(function (el) { cio.observe(el); });
+
+        // ── Footer year ──
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
 </body>
 </html>
