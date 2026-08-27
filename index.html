@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0b0b0e">
     <title>Ceasar Enterprises — Software Built for the Realities of East Africa</title>
     <meta name="description" content="Ceasar Enterprises builds offline-first business automation software, real estate platforms, and custom tools for Uganda and East Africa. No lock-in, no subscription trap.">
     <meta name="keywords" content="software development Uganda, business automation, NEBULA, CEASAR RENT, PRISM, offline-first software, Kampala software company, East Africa software">
@@ -25,12 +26,22 @@
             --gold-soft: rgba(217, 178, 94, 0.12);
             --gold-faint: rgba(217, 178, 94, 0.06);
             --text: #f1efe9;
-            --muted: #a49f94;
-            --muted-2: #746f65;
+            --muted: #a5a098;
+            --muted-2: #8b857a;
             --font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
         }
 
         html { scroll-behavior: smooth; }
+        section[id] { scroll-margin-top: 84px; }
+
+        :focus-visible { outline: 2px solid rgba(217, 178, 94, 0.75); outline-offset: 3px; border-radius: 4px; }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            .aurora { animation: none; }
+            #dust { display: none; }
+            .reveal { opacity: 1; transform: none; transition: none; }
+        }
 
         body {
             font-family: var(--font);
@@ -82,6 +93,22 @@
         .nav-links .nav-cta { padding: 9px 20px; border-radius: 999px; background: var(--gold); color: #14140f; font-weight: 600; font-size: 13px; transition: background 0.25s, box-shadow 0.25s; }
         .nav-links .nav-cta::after { display: none; }
         .nav-links .nav-cta:hover { background: #e4c377; box-shadow: 0 0 0 6px rgba(217,178,94,0.12); color: #14140f; }
+        .nav-contact { text-decoration: none; font-size: 13px; font-weight: 500; color: var(--muted); letter-spacing: 0.02em; transition: color 0.25s; }
+        .nav-contact:hover { color: var(--gold); }
+
+        .nav-toggle { display: none; background: none; border: 1px solid var(--line); border-radius: 10px; width: 40px; height: 40px; flex-direction: column; align-items: center; justify-content: center; gap: 5px; cursor: pointer; padding: 0; }
+        .nav-toggle span { display: block; width: 17px; height: 1.6px; background: var(--text); border-radius: 2px; transition: transform 0.3s, opacity 0.3s; }
+        body.nav-open .nav-toggle span:nth-child(1) { transform: translateY(6.6px) rotate(45deg); }
+        body.nav-open .nav-toggle span:nth-child(2) { opacity: 0; }
+        body.nav-open .nav-toggle span:nth-child(3) { transform: translateY(-6.6px) rotate(-45deg); }
+
+        .mobile-menu { position: fixed; top: 68px; left: 0; right: 0; z-index: 99; background: rgba(11, 11, 14, 0.96); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border-bottom: 1px solid var(--line); padding: 22px 24px 30px; transform: translateY(-12px); opacity: 0; pointer-events: none; transition: opacity 0.3s, transform 0.3s; }
+        body.nav-open .mobile-menu { transform: translateY(0); opacity: 1; pointer-events: auto; }
+        .mobile-menu a { display: flex; justify-content: space-between; align-items: center; padding: 15px 4px; text-decoration: none; font-size: 16px; font-weight: 500; color: var(--text); border-bottom: 1px solid var(--line); }
+        .mobile-menu a:last-of-type { border-bottom: none; }
+        .mobile-menu a small { color: var(--muted-2); font-size: 12px; letter-spacing: 0.06em; }
+        .mobile-menu .m-cta { margin-top: 18px; justify-content: center; padding: 14px; border-radius: 12px; background: var(--gold); color: #14140f; font-weight: 600; border-bottom: none; }
+        .mobile-menu .m-cta small { color: #14140f; }
 
         /* ── Hero ── */
         .hero { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 92vh; padding: 150px 0 90px; text-align: center; }
@@ -93,7 +120,7 @@
         .hero p.lede { font-size: 18.5px; color: var(--muted); max-width: 620px; margin: 0 auto 44px; line-height: 1.75; }
         .hero-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
 
-        .btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 30px; border-radius: 999px; font-size: 14.5px; font-weight: 600; text-decoration: none; transition: all 0.28s cubic-bezier(0.22, 1, 0.36, 1); cursor: pointer; }
+        .btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 30px; border-radius: 999px; font-size: 14.5px; font-weight: 600; text-decoration: none; transition: all 0.28s cubic-bezier(0.22, 1, 0.36, 1); cursor: pointer; border: none; }
         .btn svg { width: 15px; height: 15px; }
         .btn-gold { background: var(--gold); color: #14140f; }
         .btn-gold:hover { background: #e4c377; transform: translateY(-2px); box-shadow: 0 14px 34px rgba(217,178,94,0.22); }
@@ -152,6 +179,12 @@
             background:
                 radial-gradient(120% 120% at 20% 0%, rgba(217,178,94,0.09) 0%, transparent 55%),
                 linear-gradient(180deg, rgba(255,255,255,0.02) 0%, transparent 40%), var(--bg-deep);
+            background-image:
+                linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px),
+                radial-gradient(120% 120% at 20% 0%, rgba(217,178,94,0.09) 0%, transparent 55%),
+                linear-gradient(180deg, rgba(255,255,255,0.02) 0%, transparent 40%);
+            background-size: 44px 44px, 44px 44px, auto, auto;
             position: relative; overflow: hidden;
         }
         .product-visual svg { width: 88px; height: 88px; color: var(--gold); opacity: 0.9; }
@@ -169,7 +202,24 @@
         .contact-row .ic svg { width: 17px; height: 17px; }
         .contact-row .k { font-size: 12px; color: var(--muted-2); letter-spacing: 0.1em; text-transform: uppercase; }
         .contact-row .v { font-size: 15px; font-weight: 550; color: var(--text); margin-top: 2px; }
-        .contact-cta { margin-top: 22px; }
+
+        .contact-form { margin-top: 22px; display: grid; gap: 12px; }
+        .contact-form input, .contact-form textarea {
+            font-family: inherit; font-size: 14.5px; color: var(--text); background: rgba(255,255,255,0.03);
+            border: 1px solid var(--line); border-radius: 12px; padding: 13px 16px; width: 100%; resize: vertical;
+            transition: border-color 0.25s, background 0.25s;
+        }
+        .contact-form input:focus, .contact-form textarea:focus { outline: none; border-color: rgba(217,178,94,0.45); background: rgba(217,178,94,0.04); }
+        .contact-form textarea { min-height: 84px; }
+        .contact-form .btn { justify-content: center; width: 100%; }
+        .form-note { font-size: 12.5px; color: var(--muted-2); text-align: center; display: flex; align-items: center; justify-content: center; gap: 7px; }
+        .form-note svg { width: 12px; height: 12px; color: var(--gold); }
+
+        /* ── Invite strip ── */
+        .invite { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: rgba(255,255,255,0.016); }
+        .invite-inner { padding: 78px 0; text-align: center; }
+        .invite h2 { font-size: clamp(24px, 3.2vw, 34px); font-weight: 620; letter-spacing: -0.02em; margin: 16px 0 30px; }
+        .invite .btn { padding: 13px 28px; }
 
         /* ── Footer ── */
         footer { border-top: 1px solid var(--line); padding: 44px 0 52px; }
@@ -194,7 +244,8 @@
             .product { grid-template-columns: 1fr; gap: 36px; }
             .product.reverse .product-visual { order: 0; }
             .contact-band { grid-template-columns: 1fr; padding: 44px 30px; }
-            .nav-links { display: none; }
+            .nav-links, .nav-contact { display: none; }
+            .nav-toggle { display: flex; }
         }
         @media (max-width: 560px) {
             .stats { grid-template-columns: 1fr 1fr; }
@@ -233,10 +284,22 @@
                     <li><a href="#services">Services</a></li>
                     <li><a href="#products">Products</a></li>
                     <li><a href="#about">About</a></li>
-                    <li><a href="#contact" class="nav-cta">Start a Project</a></li>
                 </ul>
+                <a class="nav-contact" href="https://wa.me/256702246854">+256 702 246854</a>
+                <a href="#contact" class="nav-cta">Start a Project</a>
+                <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
             </div>
         </nav>
+
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="#services">Services <small>What we do</small></a>
+            <a href="#products">Products <small>NEBULA · CEASAR RENT · PRISM</small></a>
+            <a href="#about">About <small>The difference</small></a>
+            <a href="#contact">Contact <small>Kampala, Uganda</small></a>
+            <a href="https://wa.me/256702246854" class="m-cta">Start a project on WhatsApp <small>+256 702 246854</small></a>
+        </div>
 
         <!-- Hero -->
         <header class="hero">
@@ -393,6 +456,17 @@
             </div>
         </section>
 
+        <!-- Invite -->
+        <div class="invite">
+            <div class="wrap invite-inner reveal">
+                <span class="eyebrow"><span class="dot"></span>Have something in mind?</span>
+                <h2>Tell us what you need built.</h2>
+                <a class="btn btn-gold" href="#contact">Start the conversation
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+            </div>
+        </div>
+
         <!-- Contact -->
         <section id="contact" style="padding-top:40px;">
             <div class="wrap">
@@ -417,9 +491,14 @@
 <span><span class="k">Based in</span><div class="v">Kampala, Uganda</div></span>
 </div>
                         </div>
-                        <a class="btn btn-gold contact-cta" href="https://wa.me/256702246854?text=Hi%20Ceasar%20Enterprises%2C%20I%20want%20to%20start%20a%20project." target="_blank" rel="noopener">Start a project
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-                        </a>
+                        <form class="contact-form" id="contactForm">
+                            <input type="text" id="cf-name" name="name" placeholder="Your name" autocomplete="name" required>
+                            <textarea id="cf-msg" name="message" placeholder="What do you need built?" required></textarea>
+                            <button class="btn btn-gold" type="submit">Send on WhatsApp
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                            </button>
+                            <span class="form-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Your inquiry opens in WhatsApp — no form is stored.</span>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -479,6 +558,37 @@
         // ── Navbar state ──
         var nav = document.getElementById('navbar');
         window.addEventListener('scroll', function () { nav.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
+
+        // ── Mobile menu ──
+        var navToggle = document.getElementById('navToggle');
+        var mobileMenu = document.getElementById('mobileMenu');
+        function closeMenu() {
+            document.body.classList.remove('nav-open');
+            navToggle.setAttribute('aria-expanded', 'false');
+        }
+        navToggle.addEventListener('click', function () {
+            var open = document.body.classList.toggle('nav-open');
+            navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+        document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeMenu(); });
+        mobileMenu.querySelectorAll('a').forEach(function (a) {
+            a.addEventListener('click', closeMenu);
+        });
+
+        // ── WhatsApp form ──
+        var form = document.getElementById('contactForm');
+        if (form) {
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                var name = (document.getElementById('cf-name').value || '').trim();
+                var msg = (document.getElementById('cf-msg').value || '').trim();
+                var lines = ['Hi Ceasar Enterprises, I want to start a project.'];
+                lines.push(name ? 'Name: ' + name : '');
+                if (msg) lines.push('', msg);
+                var text = encodeURIComponent(lines.filter(Boolean).join('\n'));
+                window.open('https://wa.me/256702246854?text=' + text, '_blank');
+            });
+        }
 
         // ── Reveal ──
         var io = new IntersectionObserver(function (entries) {
