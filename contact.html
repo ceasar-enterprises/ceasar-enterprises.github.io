@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact — Ceasar Enterprises</title>
+    <meta name="description" content="Start a project with Ceasar Enterprises. WhatsApp, email, or the inquiry form — get a straight answer on scope and price.">
+    <link rel="canonical" href="https://ceasar-enterprises.github.io/contact.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+</head>
+<body>
+
+    <div class="loader" id="loader">
+        <svg class="mark" viewBox="0 0 48 48" aria-hidden="true">
+            <rect width="48" height="48" rx="12" fill="#e8b84b"/>
+            <path d="M33 14v22M19 20a6 6 0 0 0 0 12h6" fill="none" stroke="#141414" stroke-width="4" stroke-linecap="round"/>
+        </svg>
+        <div class="loader-text">Ceasar Enterprises</div>
+    </div>
+
+    <header class="topbar" id="topbar">
+        <div class="container topbar-inner">
+            <a class="brand" href="index.html" aria-label="Ceasar Enterprises home">
+                <svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true">
+                    <rect width="48" height="48" rx="12" fill="url(#bgold)"/>
+                    <path d="M33 14v22M19 20a6 6 0 0 0 0 12h6" fill="none" stroke="#141414" stroke-width="4" stroke-linecap="round"/>
+                    <defs><linearGradient id="bgold" x1="0" y1="0" x2="48" y2="48"><stop offset="0" stop-color="#f4c66c"/><stop offset="1" stop-color="#d4a017"/></linearGradient></defs>
+                </svg>
+                <span class="brand-text">CEASAR ENTERPRISES<small>Software · Automation</small></span>
+            </a>
+            <nav class="nav" aria-label="Primary">
+                <a href="index.html">Home</a>
+                <a href="services.html">Services</a>
+                <a href="products.html">Products</a>
+                <a href="pricing.html">Pricing</a>
+                <a href="about.html">About</a>
+                <a href="contact.html" class="active btn btn-gold btn-sm">Start a Project</a>
+            </nav>
+            <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-label="Menu">☰</button>
+        </div>
+    </header>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="products.html">Products</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="about.html">About</a>
+        <a href="contact.html" class="active">Contact</a>
+    </div>
+
+    <!-- Page hero -->
+    <section class="page-hero">
+        <div class="container">
+            <span class="eyebrow reveal">Contact</span>
+            <h1 class="reveal d1">Let's scope your<br>project properly.</h1>
+            <p class="lede reveal d2">Fill in what you know — even a rough idea is fine. The form opens a WhatsApp draft and an email, so your message reaches us whichever channel you prefer.</p>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section" style="padding-top:0;">
+        <div class="container contact-grid">
+            <div class="form-card reveal">
+                <form id="contactForm">
+                    <div class="field">
+                        <label for="cf-name">Your name *</label>
+                        <input id="cf-name" name="name" type="text" required placeholder="e.g. John Mugisha">
+                    </div>
+                    <div class="field">
+                        <label for="cf-email">Email</label>
+                        <input id="cf-email" name="email" type="email" placeholder="you@business.com">
+                    </div>
+                    <div class="field">
+                        <label for="cf-org">Organization (optional)</label>
+                        <input id="cf-org" name="org" type="text" placeholder="Business or project name">
+                    </div>
+                    <div class="field">
+                        <label for="cf-service">What do you need? *</label>
+                        <select id="cf-service" name="service" required>
+                            <option value="">Select a service…</option>
+                            <option>Custom software / dashboard</option>
+                            <option>Business automation</option>
+                            <option>Real estate / rent management</option>
+                            <option>Data analysis / reporting</option>
+                            <option>Cybersecurity / audit</option>
+                            <option>Licensing or partnership</option>
+                            <option>Something else</option>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label for="cf-budget">Budget range (optional)</label>
+                        <select id="cf-budget" name="budget">
+                            <option value="">Not sure yet</option>
+                            <option>Under UGX 500K / $150</option>
+                            <option>UGX 500K – 2M / $150–500</option>
+                            <option>UGX 2M – 5M / $500–1,500</option>
+                            <option>Above UGX 5M / $1,500</option>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label for="cf-msg">What are you trying to solve? *</label>
+                        <textarea id="cf-msg" name="msg" required placeholder="Describe what you want to build, what runs it today, and what 'done' looks like."></textarea>
+                        <div class="hint">The more specific, the better the scope — but rough is fine, we'll ask the right questions.</div>
+                    </div>
+                    <button class="btn btn-gold" type="submit" style="width:100%;">Send inquiry</button>
+                </form>
+            </div>
+
+            <div class="contact-channels">
+                <a class="channel reveal" href="https://wa.me/256702246854" target="_blank" rel="noopener">
+                    <div class="ch-ico">💬</div>
+                    <div><div class="ch-label">WhatsApp</div><div class="ch-sub">+256 702 246854 — fastest reply, business hours</div></div>
+                </a>
+                <a class="channel reveal d1" href="mailto:charlvan042@gmail.com">
+                    <div class="ch-ico">✉</div>
+                    <div><div class="ch-label">Email</div><div class="ch-sub">charlvan042@gmail.com — for specs, files, and formal requests</div></div>
+                </a>
+                <div class="channel reveal d2" style="cursor:default;">
+                    <div class="ch-ico">📍</div>
+                    <div><div class="ch-label">Kampala, Uganda</div><div class="ch-sub">Meetings in person for serious engagements; remote worldwide</div></div>
+                </div>
+                <div class="card reveal d3" style="margin-top:6px;">
+                    <div class="ico">⏱</div>
+                    <h3>What happens next</h3>
+                    <p style="margin-top:8px;">We reply within a business day, ask the sharp questions, and come back with an honest scope and a fixed quote. No automated sequences, no chasing.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a class="brand" href="index.html">
+                        <svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true">
+                            <rect width="48" height="48" rx="12" fill="url(#bgoldf)"/>
+                            <path d="M33 14v22M19 20a6 6 0 0 0 0 12h6" fill="none" stroke="#141414" stroke-width="4" stroke-linecap="round"/>
+                            <defs><linearGradient id="bgoldf" x1="0" y1="0" x2="48" y2="48"><stop offset="0" stop-color="#f4c66c"/><stop offset="1" stop-color="#d4a017"/></linearGradient></defs>
+                        </svg>
+                        <span class="brand-text">CEASAR ENTERPRISES<small>Software · Automation</small></span>
+                    </a>
+                    <p>Offline-first software built in Kampala for the realities of Uganda and East Africa.</p>
+                </div>
+                <div class="footer-col">
+                    <h5>Company</h5>
+                    <ul>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Flagships</h5>
+                    <ul>
+                        <li><a href="products.html#nebula">NEBULA</a></li>
+                        <li><a href="products.html#ceasar-rent">CEASAR RENT</a></li>
+                        <li><a href="products.html#prism">PRISM</a></li>
+                        <li><a href="products.html">All products</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Contact</h5>
+                    <ul>
+                        <li><a href="https://wa.me/256702246854" target="_blank" rel="noopener">WhatsApp +256 702 246854</a></li>
+                        <li><a href="mailto:charlvan042@gmail.com">charlvan042@gmail.com</a></li>
+                        <li><a href="contact.html">Kampala, Uganda</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© <span id="year">2026</span> Ceasar Enterprises. All rights reserved.</span>
+                <span>Built with precision in Uganda.</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

@@ -3,525 +3,266 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ceasar Enterprises — Software Solutions for East Africa</title>
-    <meta name="description" content="Ceasar Enterprises builds offline-first business automation tools, real estate platforms, and smart software solutions for Uganda and East Africa.">
-    <meta name="keywords" content="software development Uganda, business automation, NEBULA, CEASAR RENT, offline-first software, Kampala software company">
+    <title>Ceasar Enterprises — Software Built for the Realities of East Africa</title>
+    <meta name="description" content="Ceasar Enterprises builds offline-first business automation software, real estate platforms, and custom tools for Uganda and East Africa. Local-first, no lock-in, no subscription.">
+    <meta name="keywords" content="software development Uganda, business automation, NEBULA, CEASAR RENT, PRISM, offline-first software, Kampala software company, East Africa software">
     <meta name="author" content="Ceasar Enterprises">
-    <meta property="og:title" content="Ceasar Enterprises — Software Solutions">
-    <meta property="og:description" content="Offline-first business automation tools and smart software for East Africa.">
+    <meta property="og:title" content="Ceasar Enterprises — Software Built for the Realities of East Africa">
+    <meta property="og:description" content="Offline-first business automation, real estate platforms, and custom software for Uganda & East Africa.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://ceasar-enterprises.github.io/">
+    <meta property="og:image" content="https://ceasar-enterprises.github.io/assets/img/og-cover.png">
     <link rel="canonical" href="https://ceasar-enterprises.github.io/">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
-
-        * { margin: 0; padding: 0; box-sizing: border-box; cursor: none; }
-
-        :root {
-            --cyan: #00d4ff;
-            --blue: #0066ff;
-            --purple: #7b2ff7;
-            --pink: #ff006e;
-            --green: #00c896;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Outfit', 'Segoe UI', system-ui, sans-serif;
-            background: #000;
-            color: #e0e0e0;
-            overflow-x: hidden;
-            line-height: 1.6;
-        }
-
-        /* ── Custom cursor ── */
-        .cursor { position: fixed; width: 20px; height: 20px; border: 2px solid var(--cyan); border-radius: 50%; pointer-events: none; z-index: 9999; transition: transform 0.15s ease, background 0.15s ease; transform: translate(-50%, -50%); mix-blend-mode: difference; }
-        .cursor-dot { position: fixed; width: 6px; height: 6px; background: var(--cyan); border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%, -50%); }
-        .cursor.hovering { transform: translate(-50%, -50%) scale(2.5); background: rgba(0,212,255,0.1); }
-
-        /* ── Loader ── */
-        .loader { position: fixed; inset: 0; z-index: 10000; background: #000; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 30px; }
-        .loader-ring { width: 80px; height: 80px; border: 3px solid transparent; border-top-color: var(--cyan); border-radius: 50%; animation: spin 1s linear infinite; position: relative; }
-        .loader-ring::before { content: ''; position: absolute; inset: 8px; border: 3px solid transparent; border-top-color: var(--purple); border-radius: 50%; animation: spin 0.6s linear infinite reverse; }
-        .loader-ring::after { content: ''; position: absolute; inset: 16px; border: 3px solid transparent; border-top-color: var(--blue); border-radius: 50%; animation: spin 0.8s linear infinite; }
-        .loader-text { font-size: 14px; color: var(--cyan); letter-spacing: 4px; text-transform: uppercase; animation: pulse 1.5s ease-in-out infinite; }
-        .loader.done { opacity: 0; pointer-events: none; transition: opacity 0.6s ease; }
-
-        @keyframes spin { to { transform: rotate(360deg); } }
-        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
-
-        /* ── Background ── */
-        .bg-layer { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
-        .orb { position: absolute; border-radius: 50%; filter: blur(120px); opacity: 0.3; animation: drift 20s ease-in-out infinite alternate; }
-        .orb-1 { width: 500px; height: 500px; background: radial-gradient(circle, var(--cyan) 0%, transparent 70%); top: -100px; left: -100px; }
-        .orb-2 { width: 600px; height: 600px; background: radial-gradient(circle, var(--purple) 0%, transparent 70%); bottom: -150px; right: -150px; animation-delay: -7s; }
-        .orb-3 { width: 400px; height: 400px; background: radial-gradient(circle, var(--blue) 0%, transparent 70%); top: 50%; left: 50%; transform: translate(-50%, -50%); animation-delay: -13s; }
-        @keyframes drift { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(40px, -30px) scale(1.1); } }
-
-        /* ── Particles canvas ── */
-        #particles { position: fixed; inset: 0; z-index: 1; pointer-events: none; }
-
-        /* ── Grid ── */
-        .grid-lines { position: fixed; inset: 0; z-index: 1; pointer-events: none; background-image: linear-gradient(rgba(0,212,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,212,255,0.03) 1px, transparent 1px); background-size: 60px 60px; }
-
-        /* ── Content ── */
-        .content { position: relative; z-index: 2; }
-
-        /* ── Navbar ── */
-        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 16px 40px; display: flex; align-items: center; justify-content: space-between; background: rgba(0,0,0,0.4); backdrop-filter: blur(30px); border-bottom: 1px solid rgba(0,212,255,0.08); transition: all 0.4s; }
-        nav.scrolled { padding: 12px 40px; background: rgba(0,0,0,0.8); border-bottom-color: rgba(0,212,255,0.15); }
-        .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-        .logo-mark { width: 40px; height: 40px; border-radius: 50%; background: radial-gradient(circle at 30% 30%, var(--purple), var(--blue), var(--cyan)); box-shadow: 0 0 20px rgba(0,212,255,0.4); animation: logoPulse 3s ease-in-out infinite; }
-        @keyframes logoPulse { 0%, 100% { box-shadow: 0 0 20px rgba(0,212,255,0.4); } 50% { box-shadow: 0 0 40px rgba(0,212,255,0.6), 0 0 80px rgba(123,47,247,0.3); } }
-        .logo-text { font-size: 18px; font-weight: 700; color: #fff; letter-spacing: 1px; }
-        .nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
-        .nav-links a { color: #aaa; text-decoration: none; font-size: 14px; font-weight: 500; transition: all 0.3s; position: relative; padding: 4px 0; }
-        .nav-links a::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 2px; background: linear-gradient(90deg, var(--cyan), var(--purple)); transition: width 0.3s; border-radius: 2px; }
-        .nav-links a:hover { color: #fff; }
-        .nav-links a:hover::after { width: 100%; }
-        .nav-cta { background: linear-gradient(135deg, var(--cyan), var(--purple)); color: #fff !important; padding: 10px 24px; border-radius: 8px; font-weight: 600; position: relative; overflow: hidden; }
-        .nav-cta::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, var(--purple), var(--pink)); opacity: 0; transition: opacity 0.3s; }
-        .nav-cta:hover::before { opacity: 1; }
-        .nav-cta span { position: relative; z-index: 1; }
-        .nav-cta::after { display: none; }
-
-        /* ── Hero ── */
-        .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 120px 40px 80px; position: relative; }
-        .hero-content { max-width: 900px; }
-        .hero-badge { display: inline-block; padding: 8px 20px; border-radius: 20px; border: 1px solid rgba(0,212,255,0.3); color: var(--cyan); font-size: 13px; font-weight: 500; margin-bottom: 30px; letter-spacing: 2px; animation: fadeInDown 0.8s ease 0.5s both; backdrop-filter: blur(10px); background: rgba(0,212,255,0.05); }
-        .hero h1 { font-size: clamp(36px, 6vw, 80px); font-weight: 800; line-height: 1.05; margin-bottom: 28px; animation: fadeInUp 0.8s ease 0.7s both; }
-        .hero h1 .gradient { background: linear-gradient(135deg, #fff 0%, var(--cyan) 40%, var(--purple) 70%, var(--pink) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; background-size: 200% 200%; animation: gradientShift 4s ease infinite; }
-        @keyframes gradientShift { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
-        .hero p { font-size: 19px; color: #999; max-width: 620px; margin: 0 auto 44px; line-height: 1.8; animation: fadeInUp 0.8s ease 0.9s both; }
-        .hero-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; animation: fadeInUp 0.8s ease 1.1s both; }
-
-        /* ── Buttons ── */
-        .btn { padding: 16px 36px; border-radius: 12px; font-size: 15px; font-weight: 600; text-decoration: none; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); cursor: none; border: none; position: relative; overflow: hidden; }
-        .btn-primary { background: linear-gradient(135deg, var(--cyan), var(--blue)); color: #fff; box-shadow: 0 4px 20px rgba(0,212,255,0.3); }
-        .btn-primary:hover { transform: translateY(-4px) scale(1.02); box-shadow: 0 8px 40px rgba(0,212,255,0.5); }
-        .btn-primary::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, var(--blue), var(--purple)); opacity: 0; transition: opacity 0.4s; }
-        .btn-primary:hover::before { opacity: 1; }
-        .btn-primary span { position: relative; z-index: 1; }
-        .btn-outline { background: transparent; color: var(--cyan); border: 1px solid rgba(0,212,255,0.3); backdrop-filter: blur(10px); }
-        .btn-outline:hover { background: rgba(0,212,255,0.1); border-color: var(--cyan); transform: translateY(-4px); box-shadow: 0 8px 30px rgba(0,212,255,0.15); }
-
-        /* ── Sections ── */
-        section { padding: 120px 40px; max-width: 1200px; margin: 0 auto; }
-        .section-label { color: var(--cyan); font-size: 13px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 12px; }
-        .section-title { font-size: clamp(28px, 4vw, 42px); font-weight: 700; color: #fff; margin-bottom: 16px; }
-        .section-desc { color: #888; font-size: 16px; max-width: 600px; margin-bottom: 56px; }
-
-        /* ── Glass cards ── */
-        .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
-        .glass-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 20px; padding: 40px; backdrop-filter: blur(20px); transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); position: relative; overflow: hidden; }
-        .glass-card::before { content: ''; position: absolute; inset: 0; border-radius: 20px; padding: 1px; background: linear-gradient(135deg, transparent, rgba(0,212,255,0.2), transparent); -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude; opacity: 0; transition: opacity 0.5s; }
-        .glass-card:hover::before { opacity: 1; }
-        .glass-card:hover { transform: translateY(-8px) scale(1.01); border-color: rgba(0,212,255,0.15); box-shadow: 0 20px 60px rgba(0,212,255,0.08), 0 0 100px rgba(123,47,247,0.05); }
-        .card-icon { width: 56px; height: 56px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 26px; margin-bottom: 24px; transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-        .glass-card:hover .card-icon { transform: scale(1.1) rotate(-5deg); }
-        .card-icon.blue { background: rgba(0,212,255,0.1); color: var(--cyan); }
-        .card-icon.purple { background: rgba(123,47,247,0.1); color: var(--purple); }
-        .card-icon.green { background: rgba(0,200,150,0.1); color: var(--green); }
-        .card-icon.pink { background: rgba(255,0,110,0.1); color: var(--pink); }
-        .glass-card h3 { font-size: 19px; font-weight: 600; color: #fff; margin-bottom: 14px; }
-        .glass-card p { color: #777; font-size: 14px; line-height: 1.8; }
-
-        /* ── Stats ── */
-        .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 32px; text-align: center; padding: 80px 40px; max-width: 1000px; margin: 0 auto; }
-        .stat-item { position: relative; }
-        .stat-number { font-size: 48px; font-weight: 800; background: linear-gradient(135deg, var(--cyan), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        .stat-label { color: #888; font-size: 14px; margin-top: 8px; }
-        .stat-item::after { content: ''; position: absolute; right: 0; top: 10%; height: 80%; width: 1px; background: linear-gradient(180deg, transparent, rgba(0,212,255,0.2), transparent); }
-        .stat-item:last-child::after { display: none; }
-
-        /* ── Products ── */
-        .product-showcase { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; margin-bottom: 100px; }
-        .product-showcase.reverse { direction: rtl; }
-        .product-showcase.reverse > * { direction: ltr; }
-        .product-info h3 { font-size: 32px; color: #fff; margin-bottom: 18px; }
-        .product-info p { color: #888; line-height: 1.9; margin-bottom: 28px; font-size: 15px; }
-        .product-visual { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 20px; padding: 48px; text-align: center; min-height: 300px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; transition: all 0.5s; }
-        .product-visual:hover { border-color: rgba(0,212,255,0.2); box-shadow: 0 0 60px rgba(0,212,255,0.05); }
-        .product-visual .mockup { font-size: 72px; animation: float 3s ease-in-out infinite; }
-        @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-15px); } }
-        .tag { display: inline-block; padding: 5px 14px; border-radius: 8px; font-size: 12px; font-weight: 500; margin-right: 8px; margin-bottom: 8px; transition: transform 0.3s; }
-        .tag:hover { transform: scale(1.05); }
-        .tag-blue { background: rgba(0,212,255,0.1); color: var(--cyan); }
-        .tag-purple { background: rgba(123,47,247,0.1); color: var(--purple); }
-        .tag-green { background: rgba(0,200,150,0.1); color: var(--green); }
-
-        /* ── Contact ── */
-        .contact-section { text-align: center; padding: 140px 40px; }
-        .contact-links { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-top: 40px; }
-        .contact-link { display: flex; align-items: center; gap: 12px; padding: 18px 32px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 14px; color: #ccc; text-decoration: none; font-size: 15px; font-weight: 500; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); backdrop-filter: blur(10px); }
-        .contact-link:hover { border-color: rgba(0,212,255,0.3); color: var(--cyan); transform: translateY(-6px) scale(1.02); box-shadow: 0 12px 40px rgba(0,212,255,0.1); }
-
-        /* ── Marquee ── */
-        .marquee-section { padding: 40px 0; overflow: hidden; border-top: 1px solid rgba(255,255,255,0.03); border-bottom: 1px solid rgba(255,255,255,0.03); }
-        .marquee { display: flex; gap: 60px; animation: marquee 20s linear infinite; white-space: nowrap; }
-        .marquee-item { font-size: 14px; color: #444; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; display: flex; align-items: center; gap: 12px; }
-        .marquee-item .dot { width: 6px; height: 6px; background: var(--cyan); border-radius: 50%; }
-        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-
-        /* ── Footer ── */
-        footer { text-align: center; padding: 48px; border-top: 1px solid rgba(255,255,255,0.04); color: #444; font-size: 13px; }
-        footer a { color: var(--cyan); text-decoration: none; }
-
-        /* ── Animations ── */
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
-
-        .reveal { opacity: 0; transform: translateY(60px); transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1); }
-        .reveal.visible { opacity: 1; transform: translateY(0); }
-        .reveal-delay-1 { transition-delay: 0.1s; }
-        .reveal-delay-2 { transition-delay: 0.2s; }
-        .reveal-delay-3 { transition-delay: 0.3s; }
-        .reveal-delay-4 { transition-delay: 0.4s; }
-
-        /* ── Glow line ── */
-        .glow-line { width: 60px; height: 3px; background: linear-gradient(90deg, var(--cyan), var(--purple)); border-radius: 2px; margin: 20px 0 40px; box-shadow: 0 0 20px rgba(0,212,255,0.4); }
-
-        /* ── Mobile ── */
-        @media (max-width: 768px) {
-            nav { padding: 12px 20px; }
-            .nav-links { display: none; }
-            .hero { padding: 100px 20px 60px; }
-            section { padding: 80px 20px; }
-            .product-showcase { grid-template-columns: 1fr; }
-            .product-showcase.reverse { direction: ltr; }
-            .cursor, .cursor-dot { display: none; }
-            * { cursor: auto !important; }
-            .stat-item::after { display: none; }
-        }
-    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
 </head>
 <body>
+
     <!-- Loader -->
     <div class="loader" id="loader">
-        <div class="loader-ring"></div>
+        <svg class="mark" viewBox="0 0 48 48" aria-hidden="true">
+            <rect width="48" height="48" rx="12" fill="#e8b84b"/>
+            <path d="M33 14v22M19 20a6 6 0 0 0 0 12h6" fill="none" stroke="#141414" stroke-width="4" stroke-linecap="round"/>
+        </svg>
         <div class="loader-text">Ceasar Enterprises</div>
     </div>
 
-    <!-- Custom cursor -->
-    <div class="cursor" id="cursor"></div>
-    <div class="cursor-dot" id="cursorDot"></div>
-
-    <!-- Background -->
-    <div class="bg-layer">
-        <div class="orb orb-1"></div>
-        <div class="orb orb-2"></div>
-        <div class="orb orb-3"></div>
-    </div>
-    <canvas id="particles"></canvas>
-    <div class="grid-lines"></div>
-
-    <div class="content">
-        <!-- Navbar -->
-        <nav id="navbar">
-            <a href="#" class="logo">
-                <div class="logo-mark"></div>
-                <span class="logo-text">CEASAR ENTERPRISES</span>
+    <!-- Topbar -->
+    <header class="topbar" id="topbar">
+        <div class="container topbar-inner">
+            <a class="brand" href="index.html" aria-label="Ceasar Enterprises home">
+                <svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true">
+                    <rect width="48" height="48" rx="12" fill="url(#bgold)"/>
+                    <path d="M33 14v22M19 20a6 6 0 0 0 0 12h6" fill="none" stroke="#141414" stroke-width="4" stroke-linecap="round"/>
+                    <defs>
+                        <linearGradient id="bgold" x1="0" y1="0" x2="48" y2="48">
+                            <stop offset="0" stop-color="#f4c66c"/>
+                            <stop offset="1" stop-color="#d4a017"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <span class="brand-text">CEASAR ENTERPRISES<small>Software · Automation</small></span>
             </a>
-            <ul class="nav-links">
-                <li><a href="#services">Services</a></li>
-                <li><a href="#products">Products</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact" class="nav-cta"><span>Get in Touch</span></a></li>
-            </ul>
-        </nav>
-
-        <!-- Hero -->
-        <section class="hero">
-            <div class="hero-content">
-                <div class="hero-badge">SOFTWARE &bull; AUTOMATION &bull; INNOVATION</div>
-                <h1><span class="gradient">Building Software<br>That Works for Africa</span></h1>
-                <p>We build offline-first business automation tools, real estate platforms, and smart solutions designed for the realities of the East African market.</p>
-                <div class="hero-buttons">
-                    <a href="#products" class="btn btn-primary"><span>View Our Products</span></a>
-                    <a href="#contact" class="btn btn-outline">Contact Us</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Marquee -->
-        <div class="marquee-section">
-            <div class="marquee">
-                <div class="marquee-item"><span class="dot"></span>NEBULA</div>
-                <div class="marquee-item"><span class="dot"></span>CEASAR RENT</div>
-                <div class="marquee-item"><span class="dot"></span>PRISM</div>
-                <div class="marquee-item"><span class="dot"></span>OFFLINE-FIRST</div>
-                <div class="marquee-item"><span class="dot"></span>AUTOMATION</div>
-                <div class="marquee-item"><span class="dot"></span>KAMPALA</div>
-                <div class="marquee-item"><span class="dot"></span>UGANDA</div>
-                <div class="marquee-item"><span class="dot"></span>EAST AFRICA</div>
-                <div class="marquee-item"><span class="dot"></span>NEBULA</div>
-                <div class="marquee-item"><span class="dot"></span>CEASAR RENT</div>
-                <div class="marquee-item"><span class="dot"></span>PRISM</div>
-                <div class="marquee-item"><span class="dot"></span>OFFLINE-FIRST</div>
-                <div class="marquee-item"><span class="dot"></span>AUTOMATION</div>
-                <div class="marquee-item"><span class="dot"></span>KAMPALA</div>
-                <div class="marquee-item"><span class="dot"></span>UGANDA</div>
-                <div class="marquee-item"><span class="dot"></span>EAST AFRICA</div>
-            </div>
+            <nav class="nav" aria-label="Primary">
+                <a href="index.html" class="active">Home</a>
+                <a href="services.html">Services</a>
+                <a href="products.html">Products</a>
+                <a href="pricing.html">Pricing</a>
+                <a href="about.html">About</a>
+                <a href="contact.html" class="btn btn-gold btn-sm">Start a Project</a>
+            </nav>
+            <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-label="Menu">☰</button>
         </div>
+    </header>
 
-        <!-- Stats -->
-        <div class="stats">
-            <div class="stat-item reveal"><div class="stat-number" data-target="8">0</div><div class="stat-label">Products Built</div></div>
-            <div class="stat-item reveal reveal-delay-1"><div class="stat-number" data-target="40">0</div><div class="stat-label">Properties Managed</div></div>
-            <div class="stat-item reveal reveal-delay-2"><div class="stat-number" data-target="50">0</div><div class="stat-label">Prospect Partners</div></div>
-            <div class="stat-item reveal reveal-delay-3"><div class="stat-number" data-target="100">0</div><div class="stat-label">Offline-First %</div></div>
-        </div>
-
-        <!-- Services -->
-        <section id="services">
-            <div class="section-label reveal">What We Do</div>
-            <h2 class="section-title reveal">Services</h2>
-            <div class="glow-line reveal"></div>
-            <p class="section-desc reveal">End-to-end software solutions built for businesses in Uganda and East Africa.</p>
-            <div class="card-grid">
-                <div class="glass-card reveal">
-                    <div class="card-icon blue">&#x1F4BB;</div>
-                    <h3>Custom Software Development</h3>
-                    <p>Bespoke web applications, dashboards, and automation systems built from scratch — no bloated frameworks, no unnecessary dependencies.</p>
-                </div>
-                <div class="glass-card reveal reveal-delay-1">
-                    <div class="card-icon purple">&#x2699;</div>
-                    <h3>Business Automation</h3>
-                    <p>AI-powered sales pipelines, invoicing, customer management, and cycle engines that run your business while you sleep.</p>
-                </div>
-                <div class="glass-card reveal reveal-delay-2">
-                    <div class="card-icon green">&#x1F3E0;</div>
-                    <h3>Real Estate Tech</h3>
-                    <p>Rent management, tenant portals, and property platforms built for Ugandan landlords managing multiple units.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Products -->
-        <section id="products">
-            <div class="section-label reveal">Our Products</div>
-            <h2 class="section-title reveal">What We've Built</h2>
-            <div class="glow-line reveal"></div>
-            <p class="section-desc reveal">Real software, solving real problems — built and tested in Uganda.</p>
-
-            <div class="product-showcase reveal">
-                <div class="product-info">
-                    <h3>NEBULA</h3>
-                    <p>6-phase business automation engine with AI-powered sales cycles, automatic invoicing, customer churn prediction, and a futuristic glass dashboard. Runs offline, deploys anywhere.</p>
-                    <div>
-                        <span class="tag tag-blue">Python</span>
-                        <span class="tag tag-blue">SQLite</span>
-                        <span class="tag tag-purple">AI/ML</span>
-                        <span class="tag tag-green">Offline-First</span>
-                    </div>
-                </div>
-                <div class="product-visual">
-                    <div class="mockup">&#x1F680;</div>
-                </div>
-            </div>
-
-            <div class="product-showcase reverse reveal">
-                <div class="product-info">
-                    <h3>CEASAR RENT</h3>
-                    <p>Property rent management for 40+ units. Tracks tenants, payments (full/partial/advance), security deposits, maintenance, late fees, and generates printable receipts — all on LAN, no internet needed.</p>
-                    <div>
-                        <span class="tag tag-blue">Python</span>
-                        <span class="tag tag-purple">Mobile-Ready</span>
-                        <span class="tag tag-green">LAN Access</span>
-                    </div>
-                </div>
-                <div class="product-visual">
-                    <div class="mockup">&#x1F3E2;</div>
-                </div>
-            </div>
-
-            <div class="product-showcase reveal">
-                <div class="product-info">
-                    <h3>PRISM</h3>
-                    <p>Trading analysis platform with a custom Canvas charting engine — candlesticks, 12 technical indicators, drawing tools, watchlists, and paper trading. No TradingView subscription needed.</p>
-                    <div>
-                        <span class="tag tag-blue">Node.js</span>
-                        <span class="tag tag-purple">Canvas Engine</span>
-                        <span class="tag tag-blue">12 Indicators</span>
-                    </div>
-                </div>
-                <div class="product-visual">
-                    <div class="mockup">&#x1F4C8;</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- About -->
-        <section id="about">
-            <div class="section-label reveal">Who We Are</div>
-            <h2 class="section-title reveal">Built in Uganda, for Africa</h2>
-            <div class="glow-line reveal"></div>
-            <p class="section-desc reveal">We understand the constraints — unreliable internet, limited budgets, and the need for tools that just work.</p>
-            <div class="card-grid">
-                <div class="glass-card reveal">
-                    <div class="card-icon green">&#x26A1;</div>
-                    <h3>Offline-First Design</h3>
-                    <p>Every product works without internet. LAN-based access, local SQLite databases, no cloud dependency. When the internet drops, your business keeps running.</p>
-                </div>
-                <div class="glass-card reveal reveal-delay-1">
-                    <div class="card-icon blue">&#x1F512;</div>
-                    <h3>Your Data Stays Yours</h3>
-                    <p>No SaaS lock-in. No data harvesting. Software runs on your machine, data lives on your machine. Proprietary licensing, one-time payment.</p>
-                </div>
-                <div class="glass-card reveal reveal-delay-2">
-                    <div class="card-icon pink">&#x1F310;</div>
-                    <h3>Made for East Africa</h3>
-                    <p>Ugandan Shilling pricing. MTN MoMo and Airtel Money integration. Local support. We know the market because we live in it.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact -->
-        <section id="contact" class="contact-section">
-            <div class="section-label reveal">Get in Touch</div>
-            <h2 class="section-title reveal">Let's Build Something</h2>
-            <div class="glow-line reveal" style="margin: 20px auto 40px;"></div>
-            <p class="section-desc reveal" style="margin: 0 auto 40px;">Whether you need a custom tool, want to partner, or just want to talk software — reach out.</p>
-            <div class="contact-links reveal">
-                <a href="https://wa.me/256702246854" class="contact-link" target="_blank">&#x1F4F1; WhatsApp</a>
-                <a href="mailto:charlvan042@gmail.com" class="contact-link">&#x2709; Email</a>
-                <a href="#" class="contact-link">&#x1F4CD; Kampala, Uganda</a>
-            </div>
-        </section>
-
-        <!-- Footer -->
-        <footer>
-            <p>&copy; 2026 Ceasar Enterprises. All rights reserved. Built with &#x2764; in Uganda.</p>
-        </footer>
+    <!-- Mobile menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="index.html" class="active">Home</a>
+        <a href="services.html">Services</a>
+        <a href="products.html">Products</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
     </div>
 
-    <script>
-        // ── Loader ──
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                document.getElementById('loader').classList.add('done');
-                setTimeout(() => document.getElementById('loader').remove(), 600);
-            }, 1500);
-        });
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-badge reveal"><span class="dot"></span>Now accepting new projects</div>
+            <h1 class="display reveal d1">Software built for the <em>realities</em> of East Africa.</h1>
+            <p class="lede reveal d2" style="margin-top:26px;">Offline-first business automation, real estate platforms, and custom tools that keep running when the internet doesn't. Your data stays on your machine — no cloud hostage, no subscription trap.</p>
+            <div class="hero-actions reveal d3">
+                <a class="btn btn-gold" href="contact.html">Start a Project →</a>
+                <a class="btn btn-ghost" href="products.html">See What We've Built</a>
+            </div>
+            <div class="hero-meta reveal d3">
+                <div><div class="hm-label">Products shipped</div><div class="hm-value" data-count="8" data-suffix="+">0</div></div>
+                <div><div class="hm-label">Deployment model</div><div class="hm-value">Offline-first</div></div>
+                <div><div class="hm-label">Licensing</div><div class="hm-value">One-time · Yours</div></div>
+                <div><div class="hm-label">Built &amp; tested</div><div class="hm-value">Kampala, UG</div></div>
+            </div>
+        </div>
+    </section>
 
-        // ── Custom cursor ──
-        const cursor = document.getElementById('cursor');
-        const cursorDot = document.getElementById('cursorDot');
-        let mouseX = 0, mouseY = 0;
-        document.addEventListener('mousemove', e => { mouseX = e.clientX; mouseY = e.clientY; });
-        (function animateCursor() {
-            cursor.style.left = mouseX + 'px';
-            cursor.style.top = mouseY + 'px';
-            cursorDot.style.left = mouseX + 'px';
-            cursorDot.style.top = mouseY + 'px';
-            requestAnimationFrame(animateCursor);
-        })();
-        document.querySelectorAll('a, .btn, .glass-card, .contact-link, .tag').forEach(el => {
-            el.addEventListener('mouseenter', () => cursor.classList.add('hovering'));
-            el.addEventListener('mouseleave', () => cursor.classList.remove('hovering'));
-        });
+    <!-- Stats band -->
+    <div class="section-alt section tight">
+        <div class="container stats">
+            <div class="stat reveal"><div class="n" data-count="8" data-suffix="+">0</div><div class="l">Products built and running</div></div>
+            <div class="stat reveal d1"><div class="n" data-count="40" data-suffix="+">0</div><div class="l">Property units managed</div></div>
+            <div class="stat reveal d2"><div class="n" data-count="50" data-suffix="+">0</div><div class="l">Named partner prospects</div></div>
+            <div class="stat reveal d3"><div class="n" data-count="100" data-suffix="%">0</div><div class="l">Of products work offline</div></div>
+        </div>
+    </div>
 
-        // ── Particles ──
-        const canvas = document.getElementById('particles');
-        const ctx = canvas.getContext('2d');
-        let particles = [];
-        function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
-        window.addEventListener('resize', resizeCanvas);
-        resizeCanvas();
-        class Particle {
-            constructor() { this.reset(); }
-            reset() { this.x = Math.random() * canvas.width; this.y = Math.random() * canvas.height; this.size = Math.random() * 2 + 0.5; this.speedX = (Math.random() - 0.5) * 0.5; this.speedY = (Math.random() - 0.5) * 0.5; this.opacity = Math.random() * 0.5 + 0.1; }
-            update() { this.x += this.speedX; this.y += this.speedY; if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) this.reset(); }
-            draw() { ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fillStyle = `rgba(0, 212, 255, ${this.opacity})`; ctx.fill(); }
-        }
-        for (let i = 0; i < 80; i++) particles.push(new Particle());
-        function animateParticles() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particles.forEach(p => { p.update(); p.draw(); });
-            // Draw connections
-            for (let i = 0; i < particles.length; i++) {
-                for (let j = i + 1; j < particles.length; j++) {
-                    const dx = particles[i].x - particles[j].x;
-                    const dy = particles[i].y - particles[j].y;
-                    const dist = Math.sqrt(dx * dx + dy * dy);
-                    if (dist < 120) {
-                        ctx.beginPath();
-                        ctx.moveTo(particles[i].x, particles[i].y);
-                        ctx.lineTo(particles[j].x, particles[j].y);
-                        ctx.strokeStyle = `rgba(0, 212, 255, ${0.08 * (1 - dist / 120)})`;
-                        ctx.stroke();
-                    }
-                }
-            }
-            requestAnimationFrame(animateParticles);
-        }
-        animateParticles();
+    <!-- Services preview -->
+    <section class="section">
+        <div class="container">
+            <div class="section-head reveal">
+                <span class="eyebrow">What we do</span>
+                <h2>Full-stack capability,<br>delivered end to end.</h2>
+            </div>
+            <div class="grid grid-3">
+                <div class="card reveal">
+                    <div class="ico">⌘</div>
+                    <h3>Custom Software</h3>
+                    <p>Bespoke web applications, dashboards, and systems built from scratch — no bloatware, no framework debt. You own exactly what we build.</p>
+                </div>
+                <div class="card reveal d1">
+                    <div class="ico">⚙</div>
+                    <h3>Business Automation</h3>
+                    <p>AI-assisted sales pipelines, automatic invoicing, churn prediction, and cycle engines that run your operations while you sleep.</p>
+                </div>
+                <div class="card reveal d2">
+                    <div class="ico">▦</div>
+                    <h3>Real Estate Tech</h3>
+                    <p>Rent management, tenant records, receipts, and property platforms purpose-built for Ugandan landlords managing multiple units.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        // ── Reveal on scroll ──
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
-        }, { threshold: 0.1 });
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    <!-- Flagship products -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="section-head reveal">
+                <span class="eyebrow">Flagships</span>
+                <h2>Real products. Real problems. Proven in Uganda.</h2>
+            </div>
 
-        // ── Animated counters ──
-        const counterObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const el = entry.target;
-                    const target = parseInt(el.dataset.target);
-                    const suffix = target === 100 ? '%' : '+';
-                    let current = 0;
-                    const increment = target / 40;
-                    const timer = setInterval(() => {
-                        current += increment;
-                        if (current >= target) { current = target; clearInterval(timer); }
-                        el.textContent = Math.floor(current) + suffix;
-                    }, 30);
-                    counterObserver.unobserve(el);
-                }
-            });
-        }, { threshold: 0.5 });
-        document.querySelectorAll('.stat-number[data-target]').forEach(el => counterObserver.observe(el));
+            <div class="product-top reveal">
+                <div class="pt-body">
+                    <span class="p-status">Flagship · Live</span>
+                    <h3>NEBULA — Business Automation Engine</h3>
+                    <p class="lede" style="font-size:16px;margin-bottom:22px;">A 6-phase automation engine with AI-assisted sales cycles, automatic invoicing, churn prediction, and a glass dashboard. Runs fully offline; deploys on the client's own machine — desktop, LAN, or with optional remote access.</p>
+                    <div class="tags">
+                        <span class="tag gold">Python</span><span class="tag gold">SQLite</span><span class="tag gold">AI / ML</span><span class="tag gold">Offline-first</span><span class="tag gold">HTTPS ready</span>
+                    </div>
+                </div>
+                <div class="pt-visual">🚀</div>
+            </div>
 
-        // ── Smooth scroll ──
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            });
-        });
+            <div class="product-top reverse reveal">
+                <div class="pt-body">
+                    <span class="p-status">Live · Multi-unit</span>
+                    <h3>CEASAR RENT — Property Management</h3>
+                    <p class="lede" style="font-size:16px;margin-bottom:22px;">Rent management for landlords with dozens of units. Tenants, full/partial/advance payments, deposits, maintenance, late fees, printable receipts — all on LAN, no internet required.</p>
+                    <div class="tags">
+                        <span class="tag gold">Python</span><span class="tag gold">Mobile-ready</span><span class="tag gold">LAN access</span><span class="tag gold">Printable receipts</span>
+                    </div>
+                </div>
+                <div class="pt-visual">🏦</div>
+            </div>
 
-        // ── Navbar scroll ──
-        window.addEventListener('scroll', () => {
-            document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
-        });
+            <div class="product-top reveal">
+                <div class="pt-body">
+                    <span class="p-status">Live · MVP</span>
+                    <h3>PRISM — Trading Analysis Platform</h3>
+                    <p class="lede" style="font-size:16px;margin-bottom:22px;">A TradingView-style platform with a fully custom Canvas charting engine — candlesticks, 12 indicators, drawing tools, watchlists, and paper trading. No subscription needed.</p>
+                    <div class="tags">
+                        <span class="tag gold">Node.js</span><span class="tag gold">Custom Canvas engine</span><span class="tag gold">12 indicators</span>
+                    </div>
+                </div>
+                <div class="pt-visual">📈</div>
+            </div>
 
-        // ── 3D tilt on cards ──
-        document.querySelectorAll('.glass-card').forEach(card => {
-            card.addEventListener('mousemove', e => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-                const rotateX = (y - centerY) / 20;
-                const rotateY = (centerX - x) / 20;
-                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px) scale(1.01)`;
-            });
-            card.addEventListener('mouseleave', () => { card.style.transform = ''; });
-        });
+            <div class="reveal" style="text-align:center;margin-top:40px;">
+                <a class="btn btn-ghost" href="products.html">Explore all products →</a>
+            </div>
+        </div>
+    </section>
 
-        // ── Magnetic buttons ──
-        document.querySelectorAll('.btn, .contact-link').forEach(btn => {
-            btn.addEventListener('mousemove', e => {
-                const rect = btn.getBoundingClientRect();
-                const x = e.clientX - rect.left - rect.width / 2;
-                const y = e.clientY - rect.top - rect.height / 2;
-                btn.style.transform = `translate(${x * 0.15}px, ${y * 0.15}px) scale(1.02)`;
-            });
-            btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
-        });
-    </script>
+    <!-- Philosophy -->
+    <section class="section">
+        <div class="container">
+            <div class="section-head reveal">
+                <span class="eyebrow">The difference</span>
+                <h2>Your data stays yours. Full stop.</h2>
+            </div>
+            <div class="grid grid-3">
+                <div class="card reveal">
+                    <div class="ico">🔒</div>
+                    <h3>No SaaS lock-in</h3>
+                    <p>Software runs on your machine. Data lives on your machine. If the vendor disappears tomorrow, your business keeps running.</p>
+                </div>
+                <div class="card reveal d1">
+                    <div class="ico">⏱</div>
+                    <h3>Offline-first by design</h3>
+                    <p>Built for Uganda's grid and connectivity reality. When the internet drops, sales and operations don't stop.</p>
+                </div>
+                <div class="card reveal d2">
+                    <div class="ico">✅</div>
+                    <h3>One-time, honest pricing</h3>
+                    <p>No recurring subscriptions. Pay once, own it. MTN MoMo and Airtel Money accepted.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA band -->
+    <section class="section tight">
+        <div class="container">
+            <div class="cta-band reveal">
+                <div>
+                    <h2>Tell us what you need built.</h2>
+                    <p>Custom software, automation, or a tool that makes your business run itself — we'll scope it with you and deliver something you own.</p>
+                </div>
+                <a class="btn" href="https://wa.me/256702246854" target="_blank" rel="noopener">WhatsApp us →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a class="brand" href="index.html">
+                        <svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true">
+                            <rect width="48" height="48" rx="12" fill="url(#bgoldf)"/>
+                            <path d="M33 14v22M19 20a6 6 0 0 0 0 12h6" fill="none" stroke="#141414" stroke-width="4" stroke-linecap="round"/>
+                            <defs><linearGradient id="bgoldf" x1="0" y1="0" x2="48" y2="48"><stop offset="0" stop-color="#f4c66c"/><stop offset="1" stop-color="#d4a017"/></linearGradient></defs>
+                        </svg>
+                        <span class="brand-text">CEASAR ENTERPRISES<small>Software · Automation</small></span>
+                    </a>
+                    <p>Offline-first software built in Kampala for the realities of Uganda and East Africa.</p>
+                </div>
+                <div class="footer-col">
+                    <h5>Company</h5>
+                    <ul>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Flagships</h5>
+                    <ul>
+                        <li><a href="products.html#nebula">NEBULA</a></li>
+                        <li><a href="products.html#ceasar-rent">CEASAR RENT</a></li>
+                        <li><a href="products.html#prism">PRISM</a></li>
+                        <li><a href="products.html">All products</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Contact</h5>
+                    <ul>
+                        <li><a href="https://wa.me/256702246854" target="_blank" rel="noopener">WhatsApp +256 702 246854</a></li>
+                        <li><a href="mailto:charlvan042@gmail.com">charlvan042@gmail.com</a></li>
+                        <li><a href="contact.html">Kampala, Uganda</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© <span id="year">2026</span> Ceasar Enterprises. All rights reserved.</span>
+                <span>Built with precision in Uganda.</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
 </body>
 </html>
