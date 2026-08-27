@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#0b0b0e">
     <title>Ceasar Enterprises — Software Built for the Realities of East Africa</title>
-    <meta name="description" content="Ceasar Enterprises builds offline-first business automation software, real estate platforms, and custom tools for Uganda and East Africa. No lock-in, no subscription trap.">
-    <meta name="keywords" content="software development Uganda, business automation, NEBULA, CEASAR RENT, PRISM, offline-first software, Kampala software company, East Africa software">
+    <meta name="description" content="Ceasar Enterprises builds offline-first business automation, real estate platforms, cybersecurity tools, and institutional admin systems for schools, hospitals, and pharmacies across Uganda and East Africa. Self-hosted or SaaS.">
+    <meta name="keywords" content="software development Uganda, business automation, NEBULA, CEASAR RENT, CEASAR SECURITY, school management software, hospital management system, pharmacy software, cybersecurity Uganda, offline-first software, Kampala software company, East Africa software">
     <meta name="author" content="Ceasar Enterprises">
     <meta property="og:title" content="Ceasar Enterprises — Software Built for the Realities of East Africa">
-    <meta property="og:description" content="Offline-first business automation, real estate platforms, and custom software for Uganda & East Africa.">
+    <meta property="og:description" content="Offline-first business automation, real estate, cybersecurity, and institutional admin software for Uganda & East Africa. Self-hosted or SaaS.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://ceasar-enterprises.github.io/">
     <link rel="canonical" href="https://ceasar-enterprises.github.io/">
@@ -198,6 +198,9 @@
             position: relative; overflow: hidden;
         }
         .product-visual svg { width: 88px; height: 88px; color: var(--gold); opacity: 0.9; }
+        .product-visual .wordmark { font-family: var(--display-serif); font-size: 64px; font-weight: 700; letter-spacing: 0.04em; color: var(--gold); line-height: 1; }
+        .product-visual .wordmark .dot { color: var(--gold); animation: wordmarkDot 2.6s ease-in-out infinite; }
+        @keyframes wordmarkDot { 0%, 100% { opacity: 1; } 50% { opacity: 0.25; } }
         .product-visual::after { content: ''; position: absolute; inset: 0; border-radius: 20px; background: linear-gradient(135deg, transparent 40%, rgba(217,178,94,0.06) 100%); pointer-events: none; }
 
         /* ── Contact ── */
@@ -298,7 +301,7 @@
 
         <div class="mobile-menu" id="mobileMenu">
             <a href="#services">Services <small>What we do</small></a>
-            <a href="#products">Products <small>NEBULA · CEASAR RENT · PRISM</small></a>
+            <a href="#products">Products <small>NEBULA · CEASAR RENT · CEASAR SECURITY</small></a>
             <a href="#about">About <small>The difference</small></a>
             <a href="#contact">Contact <small>Kampala, Uganda</small></a>
             <a href="https://wa.me/256702246854" class="m-cta">Start a project on WhatsApp <small>+256 702 246854</small></a>
@@ -312,7 +315,7 @@
                     <span class="eyebrow">Now accepting new projects</span>
                 </div>
                 <h1 class="reveal reveal-1">Software built for the realities of <em>East Africa</em>.</h1>
-                <p class="lede reveal reveal-2">Offline-first business automation, real estate platforms, and custom tools that keep running when the internet doesn't. Your data stays on your machine — no cloud hostage, no subscription trap.</p>
+                <p class="lede reveal reveal-2">Offline-first business automation, real estate, institutional, and security software for Uganda and East Africa — that keeps running when the internet doesn't. Own it outright or run it as SaaS. Either way, your data stays yours.</p>
                 <div class="hero-actions reveal reveal-2">
                     <a class="btn btn-gold" href="https://wa.me/256702246854?text=Hi%20Ceasar%20Enterprises%2C%20I%20want%20to%20start%20a%20project." target="_blank" rel="noopener">Start a project
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
@@ -383,13 +386,13 @@
                         <span class="p-index">01</span>
                         <div class="p-status">Flagship · Live</div>
                         <h3>NEBULA — Business Automation Engine</h3>
-                        <p>A 6-phase automation engine with AI-assisted sales cycles, automatic invoicing, churn prediction, and a glass dashboard. Runs fully offline and deploys on the client's own machine — desktop, LAN, or with optional remote access.</p>
+                        <p>A 6-phase automation engine with AI-assisted sales cycles, automatic invoicing, churn prediction, and a glass dashboard. Deploys on the client's own machine — desktop, LAN, or with optional remote access — or run it as NEBULA Cloud with simple monthly SaaS pricing.</p>
                         <div class="tags">
-                            <span class="tag">Python</span><span class="tag">SQLite</span><span class="tag">AI / ML</span><span class="tag">Offline-first</span><span class="tag">HTTPS ready</span>
+                            <span class="tag">Python</span><span class="tag">SQLite</span><span class="tag">AI / ML</span><span class="tag">Offline-first</span><span class="tag">SaaS + Self-hosted</span>
                         </div>
                     </div>
                     <div class="product-visual" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>
+                        <span class="wordmark">NEBULA<span class="dot">.</span></span>
                     </div>
                 </div>
 
@@ -411,15 +414,30 @@
                 <div class="product reveal">
                     <div class="product-info">
                         <span class="p-index">03</span>
-                        <div class="p-status">Live · MVP</div>
-                        <h3>PRISM — Trading Analysis Platform</h3>
-                        <p>A TradingView-style platform with a fully custom Canvas charting engine — candlesticks, 12 indicators, drawing tools, watchlists, and paper trading. No subscription required.</p>
+                        <div class="p-status">Toolkit · Tested</div>
+                        <h3>CEASAR SECURITY — Cybersecurity Suite</h3>
+                        <p>11 Python tools, all tested and working — network scanning, log threat detection, SOC toolkit, vendor risk scoring, and Uganda-specific engines: Mobile-money fraud detection, DPA 2019 compliance, SIM-swap forensics, Kampala Wi-Fi audit, and NIN verification.</p>
                         <div class="tags">
-                            <span class="tag">Node.js</span><span class="tag">Custom Canvas engine</span><span class="tag">12 indicators</span>
+                            <span class="tag">Pen testing</span><span class="tag">SOC / Log analysis</span><span class="tag">Compliance · DPA 2019</span><span class="tag">Forensics</span><span class="tag">Fraud detection</span>
                         </div>
                     </div>
                     <div class="product-visual" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+                    </div>
+                </div>
+
+                <div class="product reverse reveal">
+                    <div class="product-info">
+                        <span class="p-index">04</span>
+                        <div class="p-status">Build · Tailored</div>
+                        <h3>CEASAR ADMIN — Institutional Systems</h3>
+                        <p>Administration software for schools, hospitals, clinics, and pharmacies. Student records and fees, patient files and billing, drug stock and expiry control, staff and payroll — built around how each institution actually works.</p>
+                        <div class="tags">
+                            <span class="tag">Schools</span><span class="tag">Hospitals &amp; Clinics</span><span class="tag">Pharmacies</span><span class="tag">Lab &amp; Diagnostics</span>
+                        </div>
+                    </div>
+                    <div class="product-visual" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M12 4v16M9 4h6"/></svg>
                     </div>
                 </div>
             </div>
@@ -445,8 +463,8 @@
                         <div class="ico">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
                         </div>
-                        <h3>No SaaS lock-in</h3>
-                        <p>Software runs on your machine. Data lives on your machine. If the vendor disappears tomorrow, your business keeps running.</p>
+                        <h3>Choose how you deploy</h3>
+                        <p>Self-hosted on your machine or NEBULA Cloud SaaS — your business keeps running either way, and your data always stays under your control.</p>
                     </div>
                     <div class="card reveal reveal-2">
                         <div class="ico">
@@ -477,7 +495,7 @@
                     <div>
                         <span class="eyebrow"><span class="dot"></span>Contact</span>
                         <h2 style="margin-top:16px;">We take on a few builds at a time.</h2>
-                        <p>One-time pricing, flat scope, and software you own outright — no subscriptions, no hostageware. Tell us how your operation runs, and we'll tell you honestly if it's a fit.</p>
+                        <p>One-time or subscription pricing, flat scope, and software you control — no hostageware. Tell us how your operation runs, and we'll tell you honestly if it's a fit.</p>
                     </div>
                     <div>
                         <div class="contact-rows">
