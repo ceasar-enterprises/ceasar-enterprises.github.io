@@ -14,6 +14,9 @@
     <meta property="og:url" content="https://ceasar-enterprises.github.io/">
     <link rel="canonical" href="https://ceasar-enterprises.github.io/">
     <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -29,6 +32,7 @@
             --muted: #a5a098;
             --muted-2: #8b857a;
             --font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            --display: "Space Grotesk", -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
         }
 
         html { scroll-behavior: smooth; }
@@ -55,6 +59,8 @@
         }
 
         ::selection { background: rgba(217, 178, 94, 0.28); color: #fff; }
+
+        h1, h2, h3, .stat .n, .display-wide { font-family: var(--display); font-weight: 600; }
 
         a { color: inherit; }
 
