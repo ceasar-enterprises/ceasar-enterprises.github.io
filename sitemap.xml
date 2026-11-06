@@ -6,4 +6,7 @@
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
+  <url>
+    <loc>https://ceasar-enterprises.github.io/nova/</loc>
+  </url>
 </urlset>
